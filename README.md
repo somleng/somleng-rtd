@@ -1,24 +1,20 @@
-# README
+# Somleng-RTD
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Build Status Badge: Coming Soon
+Custom Badges: Coming Soon
 
-Things you may want to cover:
+Somleng-RTD is a Real Time Data (RTD) collection API for The Somleng Project. The API provides Real Time Data on various projects that use Somleng. The data includes project information, number of phone calls made, number of SMS messages sent and total cost savings.
 
-* Ruby version
+## Usage
 
-* System dependencies
+Coming Soon.
 
-* Configuration
+## Deployment
 
-* Database creation
+### Heroku
 
-* Database initialization
+Coming Soon.
 
-* How to run the test suite
+## License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The software is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
