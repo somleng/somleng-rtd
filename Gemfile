@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'attr_encrypted'
 gem 'countries'
 gem 'aasm'
+gem 'responders'
+gem 'validate_url', :github => "perfectline/validates_url"
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
