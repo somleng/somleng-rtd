@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  include ApiResource
+
   DEFAULT_CURRENCY = "USD"
 
   validates :name, :description, :presence => true
@@ -62,16 +64,6 @@ class Project < ApplicationRecord
     DEFAULT_CURRENCY
   end
 
-  def serializable_hash(options = nil)
-    options ||= {}
-    super(
-      {
-        :only    => json_attributes.keys,
-        :methods => json_methods.keys
-      }.merge(options)
-    )
-  end
-
   def date_created
     created_at.rfc2822
   end
@@ -99,7 +91,7 @@ class Project < ApplicationRecord
   private
 
   def json_attributes
-    {
+    super.merge(
       :id => nil,
       :name => nil,
       :description => nil,
@@ -111,18 +103,17 @@ class Project < ApplicationRecord
       :phone_call_average_cost_per_minute => nil,
       :sms_average_cost_per_message => nil,
       :amount_saved => nil,
-    }
+    )
   end
 
   def json_methods
-    {
+    super.merge(
       :date_created => nil,
-      :date_updated => nil,
       :twilio_phone_call_cost_per_minute => nil,
       :twilio_sms_cost_per_message => nil,
       :twilio_phone_call_pricing_url => nil,
       :twilio_sms_pricing_url => nil,
       :currency => nil
-    }
+    )
   end
 end
