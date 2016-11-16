@@ -1,6 +1,7 @@
 # Somleng-RTD
 
-Build Status Badge: Coming Soon
+[![Build Status](https://travis-ci.org/dwilkie/somleng-rtd.svg?branch=master)](https://travis-ci.org/dwilkie/somleng-rtd)
+
 Custom Badges: Coming Soon
 
 Somleng-RTD is a Real Time Data (RTD) collection API for The Somleng Project. The API provides Real Time Data on various projects that use Somleng. The data includes project information, number of phone calls made, number of SMS messages sent and total cost savings.
