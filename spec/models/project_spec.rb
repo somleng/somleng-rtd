@@ -39,6 +39,9 @@ describe Project do
       ).is_greater_than_or_equal_to(0)
     }
 
+    it { is_expected.to validate_presence_of(:twilreapi_account_sid) }
+    it { is_expected.to validate_presence_of(:twilreapi_auth_token) }
+
     it { is_expected.to validate_presence_of(:amount_saved) }
     it { is_expected.to validate_numericality_of(:amount_saved) }
 

@@ -7,6 +7,7 @@ class Project < ApplicationRecord
 
   validates :homepage, :presence => true, :url => {:no_local => true}
   validates :twilreapi_host, :presence => true, :url => {:no_local => true}
+  validates :twilreapi_account_sid, :twilreapi_auth_token, :presence => true
 
   validates :country_code, :presence => true, :inclusion => {:in => :available_countries}
 
