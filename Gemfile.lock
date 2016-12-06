@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/perfectline/validates_url.git
+  remote: https://github.com/perfectline/validates_url.git
   revision: 0844e2528378d37d28d8a24c80ab82cce2b5e772
   specs:
     validate_url (1.0.2)
@@ -241,7 +241,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
