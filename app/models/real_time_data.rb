@@ -24,11 +24,7 @@ class RealTimeData
   end
 
   def amount_saved
-    Project.sum(:amount_saved)
-  end
-
-  def currency
-    Project.currency
+    Project.amount_saved.format
   end
 
   private
@@ -38,8 +34,7 @@ class RealTimeData
       :phone_calls_count => nil,
       :sms_count => nil,
       :projects_count => nil,
-      :amount_saved => nil,
-      :currency => nil
+      :amount_saved => nil
     )
   end
 end

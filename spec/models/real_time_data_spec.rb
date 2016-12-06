@@ -6,7 +6,7 @@ describe RealTimeData do
     let(:asserted_json_keys) {
       [
         "date_updated", "phone_calls_count", "sms_count", "projects_count",
-        "currency", "amount_saved"
+        "amount_saved"
       ]
     }
 
@@ -39,7 +39,7 @@ describe RealTimeData do
   end
 
   describe "aggregations" do
-    let(:projects) { create_list(:project, 2, :phone_calls_count => 3, :sms_count => 5, :amount_saved => 1) }
+    let(:projects) { create_list(:project, 2, :phone_calls_count => 3, :sms_count => 5, :amount_saved => Money.new(100, Project::DEFAULT_CURRENCY)) }
 
     def setup_scenario
     end
@@ -53,8 +53,7 @@ describe RealTimeData do
         expect(subject.phone_calls_count).to eq(0)
         expect(subject.sms_count).to eq(0)
         expect(subject.projects_count).to eq(0)
-        expect(subject.amount_saved).to eq(0)
-        expect(subject.currency).to eq("USD")
+        expect(subject.amount_saved).to eq("$0.00")
       end
 
       it { assert_no_data! }
@@ -69,8 +68,7 @@ describe RealTimeData do
         expect(subject.phone_calls_count).to eq(6)
         expect(subject.sms_count).to eq(10)
         expect(subject.projects_count).to eq(2)
-        expect(subject.amount_saved).to eq(2)
-        expect(subject.currency).to eq("USD")
+        expect(subject.amount_saved).to eq("$2.00")
       end
 
       it { assert_data! }

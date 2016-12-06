@@ -25,24 +25,9 @@ describe Project do
       ).only_integer.is_greater_than_or_equal_to(0)
     }
 
-    it { is_expected.to validate_presence_of(:phone_call_average_cost_per_minute) }
-    it {
-      is_expected.to validate_numericality_of(
-        :phone_call_average_cost_per_minute
-      ).is_greater_than_or_equal_to(0)
-    }
-
-    it { is_expected.to validate_presence_of(:sms_average_cost_per_message) }
-    it {
-      is_expected.to validate_numericality_of(
-        :sms_average_cost_per_message
-      ).is_greater_than_or_equal_to(0)
-    }
-
     it { is_expected.to validate_presence_of(:twilreapi_account_sid) }
     it { is_expected.to validate_presence_of(:twilreapi_auth_token) }
 
-    it { is_expected.to validate_presence_of(:amount_saved) }
     it { is_expected.to validate_numericality_of(:amount_saved) }
 
     it { is_expected.to validate_presence_of(:name) }
@@ -58,6 +43,10 @@ describe Project do
     it { is_expected.to validate_presence_of(:twilreapi_host) }
     it { is_expected.not_to allow_value("http://localhost:8000").for(:twilreapi_host) }
     it { is_expected.to allow_value("http://my-project.com/api").for(:twilreapi_host) }
+  end
+
+  describe "money" do
+    it { is_expected.to monetize(:amount_saved) }
   end
 
   describe "encryption" do
@@ -99,15 +88,15 @@ describe Project do
       [
         "id", "country_code", "description", "name", "homepage",
         "phone_calls_count", "sms_count", "date_created", "date_updated",
-        "phone_call_average_cost_per_minute", "sms_average_cost_per_message",
         "twilio_phone_call_cost_per_minute", "twilio_sms_cost_per_message",
         "twilio_phone_call_pricing_url", "twilio_sms_pricing_url",
-        "amount_saved", "currency"
+        "amount_saved"
       ]
     }
 
     def assert_json!
       expect(json.keys).to match_array(asserted_json_keys)
+      expect(json["amount_saved"]).to be_a(String)
     end
 
     it { assert_json! }
@@ -141,5 +130,15 @@ describe Project do
     describe "#twilio_sms_pricing_url" do
       it { expect(subject.twilio_sms_pricing_url).to eq("https://www.twilio.com/sms/pricing/us") }
     end
+  end
+
+  describe ".amount_saved" do
+    let(:asserted_currency) { described_class::DEFAULT_CURRENCY }
+
+    before do
+      create_list(factory, 2, :amount_saved => Money.new(100, asserted_currency))
+    end
+
+    it { expect(described_class.amount_saved).to eq(Money.new(200, asserted_currency)) }
   end
 end
