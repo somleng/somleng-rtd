@@ -17,9 +17,15 @@ gem 'aasm'
 gem 'responders'
 gem 'validate_url', :github => "perfectline/validates_url"
 gem 'money-rails'
+gem 'twilio-ruby'
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

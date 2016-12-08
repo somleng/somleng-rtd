@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206040514) do
+ActiveRecord::Schema.define(version: 20161207054612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,21 @@ ActiveRecord::Schema.define(version: 20161206040514) do
     t.text     "encrypted_twilreapi_auth_token",  null: false
     t.text     "encryption_data",                 null: false
     t.string   "status",                          null: false
-    t.string   "country_code",                    null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "amount_saved_cents",              null: false
-    t.string   "amount_saved_currency",           null: false
+    t.uuid     "twilio_price_id"
+    t.index ["twilio_price_id"], name: "index_projects_on_twilio_price_id", using: :btree
   end
 
+  create_table "twilio_prices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer  "average_outbound_voice_price_microunits", null: false
+    t.integer  "average_outbound_sms_price_microunits",   null: false
+    t.string   "country_code",                            null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["country_code"], name: "index_twilio_prices_on_country_code", unique: true, using: :btree
+  end
+
+  add_foreign_key "projects", "twilio_prices"
 end

@@ -1,0 +1,148 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pricing.twilio.com/v1/Voice/Countries/KH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - "<ENCODED AUTH HEADER>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 07 Dec 2016 08:06:16 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.227'
+      Twilio-Request-Id:
+      - RQ8ec82f1ad1314e24912c0a53130fe399
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '641'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"country": "Cambodia", "iso_country": "KH", "outbound_prefix_prices":
+        [{"prefixes": ["855"], "friendly_name": "Programmable Outbound Minute - Cambodia",
+        "base_price": "0.10", "current_price": "0.10"}, {"prefixes": ["8551", "8552",
+        "8553", "8554", "8555", "8556", "85570", "85572", "85573", "85574", "85575",
+        "85576", "85577", "85578", "85580", "85581", "85583", "85584", "85585", "85586",
+        "85587", "85589", "8559"], "friendly_name": "Programmable Outbound Minute
+        - Cambodia - Mobile", "base_price": "0.10", "current_price": "0.10"}], "inbound_call_prices":
+        [], "price_unit": "USD", "url": "https://pricing.twilio.com/v1/Voice/Countries/KH"}'
+    http_version: 
+  recorded_at: Wed, 07 Dec 2016 08:06:15 GMT
+- request:
+    method: get
+    uri: https://pricing.twilio.com/v1/Messaging/Countries/KH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - "<ENCODED AUTH HEADER>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 07 Dec 2016 08:06:18 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.495'
+      Twilio-Request-Id:
+      - RQ4f3f6aa638f44551b74959f826ba59bd
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '2095'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url": "https://pricing.twilio.com/v1/Messaging/Countries/KH", "country":
+        "Cambodia", "iso_country": "KH", "price_unit": "USD", "outbound_sms_prices":
+        [{"mcc": "456", "mnc": "1", "carrier": "MobiTel", "prices": [{"number_type":
+        "mobile", "base_price": "0.044", "current_price": "0.044"}, {"number_type":
+        "local", "base_price": "0.044", "current_price": "0.044"}]}, {"mcc": "456",
+        "mnc": "18", "carrier": "Mfone", "prices": [{"number_type": "mobile", "base_price":
+        "0.044", "current_price": "0.044"}, {"number_type": "local", "base_price":
+        "0.044", "current_price": "0.044"}]}, {"mcc": "456", "mnc": "2", "carrier":
+        "Hello", "prices": [{"number_type": "mobile", "base_price": "0.044", "current_price":
+        "0.044"}, {"number_type": "local", "base_price": "0.044", "current_price":
+        "0.044"}]}, {"mcc": "456", "mnc": "5", "carrier": "Star Cell", "prices": [{"number_type":
+        "mobile", "base_price": "0.044", "current_price": "0.044"}, {"number_type":
+        "local", "base_price": "0.044", "current_price": "0.044"}]}, {"mcc": "456",
+        "mnc": "4", "carrier": "qb", "prices": [{"number_type": "mobile", "base_price":
+        "0.044", "current_price": "0.044"}, {"number_type": "local", "base_price":
+        "0.044", "current_price": "0.044"}]}, {"mcc": "456", "mnc": "6", "carrier":
+        "Smart Mobile", "prices": [{"number_type": "mobile", "base_price": "0.044",
+        "current_price": "0.044"}, {"number_type": "local", "base_price": "0.044",
+        "current_price": "0.044"}]}, {"mcc": "456", "mnc": "9", "carrier": "Beeline",
+        "prices": [{"number_type": "mobile", "base_price": "0.044", "current_price":
+        "0.044"}, {"number_type": "local", "base_price": "0.044", "current_price":
+        "0.044"}]}, {"mcc": "456", "mnc": "999", "carrier": "Other", "prices": [{"number_type":
+        "mobile", "base_price": "0.044", "current_price": "0.044"}, {"number_type":
+        "local", "base_price": "0.044", "current_price": "0.044"}]}, {"mcc": "456",
+        "mnc": "8", "carrier": "Metfone", "prices": [{"number_type": "mobile", "base_price":
+        "0.044", "current_price": "0.044"}, {"number_type": "local", "base_price":
+        "0.044", "current_price": "0.044"}]}], "inbound_sms_prices": []}'
+    http_version: 
+  recorded_at: Wed, 07 Dec 2016 08:06:17 GMT
+recorded_with: VCR 3.0.3
