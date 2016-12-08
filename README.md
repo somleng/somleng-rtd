@@ -10,6 +10,10 @@ This API is hosted at [http://rtd.somleng.org](http://rtd.somleng.org)
 
 See [GETTING STARTED](https://github.com/dwilkie/somleng-rtd/blob/master/GETTING_STARTED.md) for information on how to consume the API.
 
+## Deployment
+
+See [DEPLOYMENT](https://github.com/dwilkie/somleng-rtd/blob/master/DEPLOYMENT.md) deployment specific info.
+
 ## License
 
 The software is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

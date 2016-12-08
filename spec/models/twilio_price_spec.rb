@@ -109,19 +109,29 @@ describe TwilioPrice do
       setup_scenario
     end
 
-    describe ".fetch_new" do
+    describe ".fetch_new(*countries)" do
       let(:new_twilio_price) { described_class.find_by_country_code(country_code) }
+      let(:countries) { [] }
+
+      def do_fetch_new!
+        described_class.fetch_new!(*countries)
+      end
 
       def setup_scenario
         super
-        described_class.fetch_new!
+        do_fetch_new!
       end
 
-      context "countries are specified" do
+      context "countries are specified via ENV" do
         def env_vars
           super.merge(:twilio_price_countries => country_code)
         end
 
+        it { expect(new_twilio_price).to be_persisted }
+      end
+
+      context "countries are specified via args" do
+        let(:countries) { ["kh"] }
         it { expect(new_twilio_price).to be_persisted }
       end
 

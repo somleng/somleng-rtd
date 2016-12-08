@@ -26,8 +26,9 @@ class TwilioPrice < ApplicationRecord
     ISO3166::Country.codes
   end
 
-  def self.fetch_new!
-    ENV["TWILIO_PRICE_COUNTRIES"].to_s.split(";").each do |country_code|
+  def self.fetch_new!(*countries)
+    countries = ENV["TWILIO_PRICE_COUNTRIES"].to_s.split(";") if countries.empty?
+    countries.each do |country_code|
       twilio_price = self.where(:country_code => country_code.upcase).first_or_initialize
       twilio_price.fetch!
     end
