@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207054612) do
+ActiveRecord::Schema.define(version: 20161208030947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161207054612) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "amount_saved_cents",              null: false
-    t.uuid     "twilio_price_id"
+    t.uuid     "twilio_price_id",                 null: false
     t.index ["twilio_price_id"], name: "index_projects_on_twilio_price_id", using: :btree
   end
 
