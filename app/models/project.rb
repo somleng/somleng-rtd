@@ -57,8 +57,24 @@ class Project < ApplicationRecord
 
   def fetch!
     twilio_client.account.usage.records.list.select do |record|
-      record.category == USAGE_RECORD_OUTBOUND_CALLS_CATEGORY
+      case record.category
+
+      when "calls"
+        self.phone_calls_count = record.count
+      when "calls-outbound"
+        outbound_phone_calls_count = record.count
+      when "calls-inbound"
+        inbound_phone_calls_count = record.count
+      when "sms"
+        self.sms_count = record.count
+      when "sms-inbound"
+        inbound_sms_count = record.count
+      when "sms-outbound"
+        outbound_sms_count = record.count
+      end
     end
+
+    save!
   end
 
   private

@@ -87,6 +87,27 @@ describe Project do
     it { assert_json! }
   end
 
+  describe "#fetch!", :vcr, :cassette => :fetch_usage_records, :vcr_options => {:match_requests_on => [:method, :twilreapi_api_resource]} do
+    subject { create(factory) }
+
+    def setup_scenario
+      subject.fetch!
+    end
+
+    before do
+      setup_scenario
+    end
+
+    def assert_fetch!
+      subject.reload
+      # from cassette
+      expect(subject.phone_calls_count).to eq(1947)
+      expect(subject.sms_count).to eq(0)
+    end
+
+    it { assert_fetch! }
+  end
+
   describe ".amount_saved" do
     let(:asserted_currency) { described_class::DEFAULT_CURRENCY }
 

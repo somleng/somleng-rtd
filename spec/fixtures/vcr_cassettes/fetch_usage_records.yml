@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://example.com/api/2010-04-01/Accounts/ACC123456789/Usage/Records.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - "<ENCODED AUTH HEADER>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 22 Dec 2016 05:49:13 GMT
+      Etag:
+      - W/"d5b84c4b8f2bebd2b8ff9e226afd93e6"
+      Server:
+      - nginx/1.10.1
+      Strict-Transport-Security:
+      - max-age=15552000
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 5828a183-420b-4bc8-8106-b8a3d334f07b
+      X-Runtime:
+      - '0.111610'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1521'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"usage_records":[{"category":"calls","description":"Voice Minutes","account_sid":"ACC123456789","start_date":null,"end_date":null,"count":1947,"count_unit":"calls","usage":4275,"usage_unit":"minutes","price":"16.34","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls","subresource_uris":{}},{"category":"calls-inbound","description":"Inbound
+        Voice Minutes","account_sid":"ACC123456789","start_date":null,"end_date":null,"count":1446,"count_unit":"calls","usage":3601,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-inbound","subresource_uris":{}},{"category":"calls-outbound","description":"Outbound
+        Voice Minutes","account_sid":"ACC123456789","start_date":null,"end_date":null,"count":501,"count_unit":"calls","usage":674,"usage_unit":"minutes","price":"16.34","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-outbound","subresource_uris":{}}],"first_page_uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?page=0","end":0,"previous_page_uri":null,"next_page_uri":null,"page":0,"page_size":50,"start":0,"uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?page=0"}'
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 05:49:13 GMT
+recorded_with: VCR 3.0.3
