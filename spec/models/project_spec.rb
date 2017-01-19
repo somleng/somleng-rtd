@@ -103,6 +103,7 @@ describe Project do
       # from cassette
       expect(subject.phone_calls_count).to eq(1947)
       expect(subject.sms_count).to eq(0)
+      expect(subject.amount_saved).to eq(Money.new(3376, "USD"))
     end
 
     it { assert_fetch! }

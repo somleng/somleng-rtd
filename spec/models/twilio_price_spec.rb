@@ -48,6 +48,20 @@ describe TwilioPrice do
     it { assert_json! }
   end
 
+  describe "#calculate_outbound_voice_price(minutes)" do
+    let(:minutes) { 2 }
+    let(:result) { subject.calculate_outbound_voice_price(minutes) }
+    subject { create(factory, :average_outbound_voice_price => Money.new(44000, asserted_currency)) }
+    it { expect(result).to eq(Money.new(9, "USD")) }
+  end
+
+  describe "#calculate_outbound_sms_price(count)" do
+    let(:count) { 2 }
+    let(:result) { subject.calculate_outbound_sms_price(count) }
+    subject { create(factory, :average_outbound_sms_price => Money.new(44000, asserted_currency)) }
+    it { expect(result).to eq(Money.new(9, "USD")) }
+  end
+
   describe "price display methods" do
     let(:average_outbound_voice_price) { Money.new(100000, asserted_currency) }
     let(:average_outbound_sms_price) { Money.new(50000, asserted_currency) }

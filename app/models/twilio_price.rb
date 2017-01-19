@@ -66,6 +66,14 @@ class TwilioPrice < ApplicationRecord
     url(:sms)
   end
 
+  def calculate_outbound_voice_price(minutes)
+    (minutes * average_outbound_voice_price).exchange_to("USD")
+  end
+
+  def calculate_outbound_sms_price(count)
+    (count * average_outbound_sms_price).exchange_to("USD")
+  end
+
   private
 
   def url(type)
