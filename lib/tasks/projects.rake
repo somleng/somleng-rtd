@@ -1,4 +1,9 @@
 namespace :projects do
+  desc "Fetches project usage info"
+  task :fetch => :environment do
+    Project.fetch!
+  end
+
   def prompt_for_input(prompt, options = {})
     placeholder = options[:placeholder] || DEFAULT_PLACEHOLDER if options[:placeholder] != false
     prompt_text = prompt
