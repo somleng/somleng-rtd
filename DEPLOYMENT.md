@@ -14,6 +14,7 @@ $ heroku config:set TWILIO_ACCOUNT_SID=your_twilio_account_sid TWILIO_AUTH_TOKEN
 
 1. Provision the Heroku Scheduler add-on
 2. Add a job for updating Twilio prices: `rake twilio_price:fetch`
+3. Add a job for updating project data: `rake projects:fetch`
 
 ### Creating a new Project
 
