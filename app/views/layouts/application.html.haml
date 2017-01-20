@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %mets{:name => "viewport", :content => "width=device-width, initial-scale=1"}
+    %title Somleng::RealTimeData
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+  %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{:type => "button", :data => {:toggle => "collapsed", :target => "#collapsable_navigation", :expanded => false}}
+            %span.sr-only
+              Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#"}
+            Somleng
+
+        #collapsable_navigation.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{:href => "#overview"}
+                Overview
+            %li
+              %a{:href => "#projects"}
+                Projects
+            %li
+              %a{:href => "#api"}
+                API
+
+    .container-fluid
+      %h1
+        = fa_icon("clock-o", :text => "Real Time Data for Somleng")
+      = yield

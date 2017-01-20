@@ -9,7 +9,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'attr_encrypted'
 gem 'countries'
@@ -18,6 +17,10 @@ gem 'responders'
 gem 'validate_url', :github => "perfectline/validates_url"
 gem 'money-rails'
 gem 'twilio-ruby'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootswatch-rails'
+gem 'haml-rails'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'rails_12factor'
