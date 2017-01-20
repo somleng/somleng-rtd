@@ -1,0 +1,167 @@
+%section#overview
+  %h2
+    Overview
+  %p
+    Last updated
+    = time_ago_in_words(@real_time_data.updated_at, :include_seconds => true)
+    ago
+  .row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+      .panel.panel-primary
+        .panel-heading
+          = fa_icon("building", :text => "Projects")
+        .panel-body
+          = number_to_human(@real_time_data.projects_count)
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+      .panel.panel-warning
+        .panel-heading
+          = fa_icon("phone", :text => "Phone Calls")
+        .panel-body
+          = number_to_human(@real_time_data.phone_calls_count)
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+      .panel.panel-info
+        .panel-heading
+          = fa_icon("wechat", :text => "SMS")
+        .panel-body
+          = number_to_human(@real_time_data.sms_count)
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+      .panel.panel-success
+        .panel-heading
+          = fa_icon("money", :text => "Cost Savings")
+        .panel-body
+          = @real_time_data.amount_saved
+
+%section#projects
+  %h2
+    Projects
+
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      .table-responsive
+        %table.table.table-striped
+          %caption
+            %h5
+              Legend
+            %p
+              = fa_icon("phone", :text => "= Phone Calls,")
+              = fa_icon("wechat", :text => "= SMS,")
+              = fa_icon("money", :text => "= Cost Savings,")
+              = fa_icon("globe", :text => "= Project Location,")
+              = fa_icon("edge", :text => "= Project Homepage,")
+              = fa_icon("tag", :text => "= Comparison Voice Pricing,")
+              = fa_icon("tags", :text => "= Comparison SMS Pricing")
+          %thead
+            %tr
+              %th
+                \#
+              %th{:title => "Name"}
+                Name
+              %th{:title => "Description"}
+                Description
+              %th{:title => "Phone Calls"}
+                = fa_icon("phone")
+              %th{:title => "SMS"}
+                = fa_icon("wechat")
+              %th{:title => "Cost Savings"}
+                = fa_icon("money")
+              %th{:title => "Project Location"}
+                = fa_icon("globe")
+              %th{:title => "Project Homepage"}
+                = fa_icon("edge")
+              %th{:title => "Comparison Voice Pricing"}
+                = fa_icon("tag")
+              %th{:title => "Comparison SMS Pricing"}
+                = fa_icon("tags")
+          %tbody
+            - @projects.each_with_index do |project, index|
+              %tr
+                %th{:scope => "row"}
+                  = index + 1
+                %td{:title => "Name"}
+                  = project.name
+                %td{:title => "Description"}
+                  = project.description
+                %td{:title => "Phone Calls"}
+                  = number_to_human(project.phone_calls_count)
+                %td{:title => "SMS"}
+                  = number_to_human(project.sms_count)
+                %td{:title => "Cost Savings"}
+                  = project.amount_saved.format
+                %td{:title => "Project Location"}
+                  = project.country_name
+                %td{:title => "Project Homepage"}
+                  = link_to(project.homepage, :title => "Project Homepage", :target => "_blank") do
+                    = fa_icon("edge")
+                %td{:title => "Comparison Voice Pricing"}
+                  = link_to(project.twilio_price_voice_url, :title => "Twilio Voice Pricing", :target => "_blank") do
+                    = fa_icon("tag")
+                %td{:title => "Comparison SMS Pricing"}
+                  = link_to(project.twilio_price_sms_url, :title => "Twilio SMS Pricing", :target => "_blank") do
+                    = fa_icon("tags")
+
+%section#api
+  %h2
+    API
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      %section#get_real_time_data
+        %h3
+          GET Real Time Data
+        %p
+          Retuns aggregate data about all the projects that are using Somleng.
+        %h5
+          API Endpoint
+        %code
+          = api_real_time_data_url
+        %h5
+          CURL Request
+        %pre
+          = preserve do
+            :escaped
+              $ curl #{api_real_time_data_url}
+        %h5
+          Response
+        %pre
+          = preserve do
+            = JSON.pretty_generate(JSON.parse(@real_time_data.to_json))
+      %section#get_projects
+        %h3
+          GET Projects
+        %p
+          Returns a list of Projects which are currently using Somleng.
+        %h5
+          API Endpoint
+        %code
+          = api_projects_url
+        %h5
+          CURL Request
+        %pre
+          = preserve do
+            :escaped
+              $ curl #{api_projects_url}
+        %h5
+          Response
+        %pre
+          = preserve do
+            = JSON.pretty_generate(JSON.parse(Project.all.to_json))
+      %section#get_project
+        - project_id = Project.first.id || "<project_id>"
+        %h3
+          GET Project
+        %p
+          Returns a single project given an id
+        %h5
+          API Endpoint
+        %code
+          = api_project_url(project_id)
+        %h5
+          CURL Request
+        %pre
+          = preserve do
+            :escaped
+              $ curl #{api_project_url(project_id)}
+        %h5
+          Response
+        %pre
+          = preserve do
+            = JSON.pretty_generate(JSON.parse(Project.first.to_json))

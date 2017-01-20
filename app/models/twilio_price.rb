@@ -22,6 +22,8 @@ class TwilioPrice < ApplicationRecord
   delegate :available_countries,
            :to => :class
 
+  delegate :name, :to => :country, :prefix => true
+
   def self.available_countries
     ISO3166::Country.codes
   end
@@ -36,6 +38,10 @@ class TwilioPrice < ApplicationRecord
 
   def self.fetch!
     find_each { |twilio_price| twilio_price.fetch! }
+  end
+
+  def country
+    ISO3166::Country[country_code]
   end
 
   def fetch!

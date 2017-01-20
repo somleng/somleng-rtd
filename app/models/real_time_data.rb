@@ -6,9 +6,13 @@ class RealTimeData
     {}
   end
 
-  def date_updated
+  def updated_at
     project = Project.order(:updated_at => :desc).first
-    project && project.updated_at.rfc2822
+    project && project.updated_at
+  end
+
+  def date_updated
+    updated_at.rfc2822
   end
 
   def projects_count

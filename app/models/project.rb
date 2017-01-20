@@ -36,6 +36,9 @@ class Project < ApplicationRecord
   monetize :amount_saved_cents,
            :with_currency => DEFAULT_CURRENCY
 
+  delegate :country_name, :to => :twilio_price
+  delegate :voice_url, :sms_url, :to => :twilio_price, :prefix => true
+
   include AASM
 
   aasm :column => :status do
@@ -125,7 +128,6 @@ class Project < ApplicationRecord
       :name => nil,
       :description => nil,
       :homepage => nil,
-      :country_code => nil,
       :phone_calls_count => nil,
       :sms_count => nil,
     )
