@@ -50,7 +50,7 @@ class Project < ApplicationRecord
   end
 
   def self.fetch!
-    all.include(:twilio_price).find_each { |project| project.fetch! }
+    all.includes(:twilio_price).find_each { |project| project.fetch! }
   end
 
   def as_json(options = nil)
