@@ -6,9 +6,9 @@ Somleng-RTD is a Real Time Data (RTD) collection API for [The Somleng Project](h
 
 This API is hosted at [http://rtd.somleng.org](http://rtd.somleng.org)
 
-## Usage
+## API
 
-See [GETTING STARTED](https://github.com/dwilkie/somleng-rtd/blob/master/GETTING_STARTED.md) for information on how to consume the API.
+See [the API documentation](http://rtd.somleng.org/#api) for information on how to consume the API.
 
 ## Deployment
 
