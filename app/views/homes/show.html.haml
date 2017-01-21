@@ -3,8 +3,11 @@
     Overview
   %p
     Last updated
-    = time_ago_in_words(@real_time_data.updated_at, :include_seconds => true)
-    ago
+    - if last_updated = @real_time_data.updated_at
+      = time_ago_in_words(last_updated, :include_seconds => true)
+      ago
+    - else
+      never
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3
       .panel.panel-primary
@@ -139,13 +142,14 @@
           = preserve do
             :escaped
               $ curl #{api_projects_url}
-        %h5
-          Response
-        %pre
-          = preserve do
-            = JSON.pretty_generate(JSON.parse(Project.all.to_json))
+        - if @projects.any?
+          %h5
+            Response
+          %pre
+            = preserve do
+              = JSON.pretty_generate(JSON.parse(@projects.to_json))
       %section#get_project
-        - project_id = Project.first.id || "<project_id>"
+        - project_id = (@sample_project && @sample_project.id) || ":project_id"
         %h3
           GET Project
         %p
@@ -160,8 +164,9 @@
           = preserve do
             :escaped
               $ curl #{api_project_url(project_id)}
-        %h5
-          Response
-        %pre
-          = preserve do
-            = JSON.pretty_generate(JSON.parse(Project.first.to_json))
+        - if @sample_project
+          %h5
+            Response
+          %pre
+            = preserve do
+              = JSON.pretty_generate(JSON.parse(@sample_project.to_json))

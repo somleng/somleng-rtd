@@ -12,7 +12,7 @@ class RealTimeData
   end
 
   def date_updated
-    updated_at.rfc2822
+    updated_at && updated_at.rfc2822
   end
 
   def projects_count

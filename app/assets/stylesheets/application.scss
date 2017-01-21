@@ -4,6 +4,9 @@
 @import "bootswatch/cerulean/variables";
 @import "bootstrap";
 
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";
 @import "font-awesome";
