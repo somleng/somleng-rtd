@@ -3,41 +3,44 @@
   - title = "Somleng - Real Time Data"
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"}
     %title
       = title
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
-  %body
-    %nav.navbar.navbar-default.navbar-fixed-top
-      .container-fluid
-        .navbar-header
-          %button.navbar-toggle.collapsed{:type => "button", :data => {:toggle => "collapsed", :target => "#collapsable_navigation", :expanded => false}}
-            %span.sr-only
-              Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{:href => "#"}
-            Somleng RTD
+    = javascript_include_tag 'application'
 
-        #collapsable_navigation.collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            %li
-              %a{:href => "#overview"}
-                Overview
-            %li
-              %a{:href => "#projects"}
-                Projects
-            %li
-              %a{:href => "#api"}
-                API
-            %li
-              = link_to("https://github.com/dwilkie/somleng-rtd", :target => "_blank") do
-                = fa_icon("github", :text => "Source Code")
-            %li
-              = link_to("http://www.somleng.org", :target => "_blank") do
-                = fa_icon("home", :text => "Somleng Home")
+  %body
     .container-fluid
+      %nav.navbar.navbar-default.navbar-fixed-top
+        .container-fluid
+          .navbar-header
+            %button.navbar-toggle.collapsed{:type => "button", :data => {:toggle => "collapse", :target => "#collapsable_navigation", :expanded => false}}
+              %span.sr-only
+                Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.navbar-brand{:href => "#"}
+              Somleng RTD
+
+          #collapsable_navigation.collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => "#overview"}
+                  Overview
+              %li
+                %a{:href => "#projects"}
+                  Projects
+              %li
+                %a{:href => "#api"}
+                  API
+              %li
+                = link_to("https://github.com/dwilkie/somleng-rtd", :target => "_blank") do
+                  = fa_icon("github", :text => "Source Code")
+              %li
+                = link_to("http://www.somleng.org", :target => "_blank") do
+                  = fa_icon("home", :text => "Somleng Home")
       %h1
         = fa_icon("clock-o", :text => title)
       = yield
