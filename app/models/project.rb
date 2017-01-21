@@ -50,7 +50,7 @@ class Project < ApplicationRecord
   end
 
   def self.fetch!
-    all.find_each { |project| project.fetch! }
+    all.include(:twilio_price).find_each { |project| project.fetch! }
   end
 
   def as_json(options = nil)
@@ -66,7 +66,7 @@ class Project < ApplicationRecord
       :outbound_sms_price => Money.new(0, DEFAULT_CURRENCY)
     }
 
-    twilio_client.account.usage.records.list.select do |record|
+    twilio_client.account.usage.records.list.each do |record|
       case record.category
       when "calls"
         self.phone_calls_count = record.count
