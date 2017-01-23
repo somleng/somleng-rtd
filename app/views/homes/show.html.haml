@@ -124,7 +124,7 @@
 
 %section#api
   %h2
-    API
+    RTD API
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
       %section#get_real_time_data
@@ -167,7 +167,7 @@
             Response
           %pre
             = preserve do
-              = JSON.pretty_generate(JSON.parse(@projects.to_json))
+              = JSON.pretty_generate(JSON.parse(@projects.limit(2).to_json))
       %section#get_project
         - project_id = (@sample_project && @sample_project.id) || ":project_id"
         %h3
