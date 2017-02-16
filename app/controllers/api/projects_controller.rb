@@ -1,5 +1,4 @@
 class Api::ProjectsController < Api::BaseController
-
   private
 
   def find_resources
@@ -7,6 +6,6 @@ class Api::ProjectsController < Api::BaseController
   end
 
   def association_chain
-    Project
+    Project.between_dates(query_filter.start_date, query_filter.end_date)
   end
 end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://example.com/api/2010-04-01/Accounts/ACC123456789/Usage/Records.json
+    uri: https://example.com/api/2010-04-01/Accounts/ACC123456789/Usage/Records.json?EndDate=2017-02-15&StartDate=2017-02-15
     body:
       encoding: US-ASCII
       string: ''
@@ -27,9 +27,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 22 Dec 2016 05:49:13 GMT
+      - Thu, 16 Feb 2017 04:36:24 GMT
       Etag:
-      - W/"d5b84c4b8f2bebd2b8ff9e226afd93e6"
+      - W/"5cc6b05cffeb369fbc527c262ec734f2"
       Server:
       - nginx/1.10.1
       Strict-Transport-Security:
@@ -39,20 +39,20 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 5828a183-420b-4bc8-8106-b8a3d334f07b
+      - 0f5d57d0-fb6b-4c68-9e6d-aed39fd0fd27
       X-Runtime:
-      - '0.111610'
+      - '0.209632'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1521'
+      - '1764'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"usage_records":[{"category":"calls","description":"Voice Minutes","account_sid":"ACC123456789","start_date":null,"end_date":null,"count":1947,"count_unit":"calls","usage":4275,"usage_unit":"minutes","price":"16.34","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls","subresource_uris":{}},{"category":"calls-inbound","description":"Inbound
-        Voice Minutes","account_sid":"ACC123456789","start_date":null,"end_date":null,"count":1446,"count_unit":"calls","usage":3601,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-inbound","subresource_uris":{}},{"category":"calls-outbound","description":"Outbound
-        Voice Minutes","account_sid":"ACC123456789","start_date":null,"end_date":null,"count":501,"count_unit":"calls","usage":674,"usage_unit":"minutes","price":"16.34","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-outbound","subresource_uris":{}}],"first_page_uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?page=0","end":0,"previous_page_uri":null,"next_page_uri":null,"page":0,"page_size":50,"start":0,"uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?page=0"}'
+      string: '{"usage_records":[{"category":"calls","description":"Voice Minutes","account_sid":"ACC123456789","start_date":"2017-02-15","end_date":"2017-02-15","count":677,"count_unit":"calls","usage":1114,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls&EndDate=2017-02-15&StartDate=2017-02-15","subresource_uris":{}},{"category":"calls-inbound","description":"Inbound
+        Voice Minutes","account_sid":"ACC123456789","start_date":"2017-02-15","end_date":"2017-02-15","count":534,"count_unit":"calls","usage":971,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-inbound&EndDate=2017-02-15&StartDate=2017-02-15","subresource_uris":{}},{"category":"calls-outbound","description":"Outbound
+        Voice Minutes","account_sid":"ACC123456789","start_date":"2017-02-15","end_date":"2017-02-15","count":143,"count_unit":"calls","usage":143,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-outbound&EndDate=2017-02-15&StartDate=2017-02-15","subresource_uris":{}}],"first_page_uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?EndDate=2017-02-15&StartDate=2017-02-15&page=0","end":0,"previous_page_uri":null,"next_page_uri":null,"page":0,"page_size":50,"start":0,"uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?EndDate=2017-02-15&StartDate=2017-02-15&page=0"}'
     http_version: 
-  recorded_at: Thu, 22 Dec 2016 05:49:13 GMT
+  recorded_at: Thu, 16 Feb 2017 04:36:24 GMT
 recorded_with: VCR 3.0.3

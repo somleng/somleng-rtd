@@ -39,7 +39,15 @@ describe RealTimeData do
   end
 
   describe "aggregations" do
-    let(:projects) { create_list(:project, 2, :phone_calls_count => 3, :sms_count => 5, :amount_saved => Money.new(100, Project::DEFAULT_CURRENCY)) }
+    let(:project_aggregations) {
+      create_list(
+        :project_aggregation,
+        2,
+        :phone_calls_count => 3,
+        :sms_count => 5,
+        :amount_saved => Money.new(100, ProjectAggregation::DEFAULT_CURRENCY)
+      )
+    }
 
     def setup_scenario
     end
@@ -61,7 +69,7 @@ describe RealTimeData do
 
     context "given there are projects" do
       def setup_scenario
-        projects
+        project_aggregations
       end
 
       def assert_data!

@@ -1,4 +1,6 @@
 class Api::BaseController < ApplicationController
+  self.responder = Api::QueryFilterResponder
+
   protect_from_forgery :with => :null_session
 
   respond_to :json
@@ -13,7 +15,21 @@ class Api::BaseController < ApplicationController
     respond_with_resource(resource)
   end
 
+  def query_filter
+    @query_filter ||= build_query_filter
+  end
+
   private
+
+  def build_query_filter
+    query_filter = QueryFilter.new(query_filter_params)
+    query_filter.valid?
+    query_filter
+  end
+
+  def query_filter_params
+    params.permit("StartDate", "EndDate")
+  end
 
   def find_resources
     @resources = association_chain.all

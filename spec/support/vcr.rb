@@ -21,10 +21,17 @@ VCR.configure do |c|
   end
 
   c.register_request_matcher(:twilreapi_api_resource) do |actual, playback|
-    actual_host = URI.parse(actual.uri).host
-    actual_account_sid = (twilreapi_account_sid_regexp.match(actual.uri.to_s) || [])[1]
-    replaced_url = actual.uri.to_s.sub(actual_host, replacement_twilreapi_host).sub(actual_account_sid.to_s, replacement_twilreapi_account_sid)
-    replaced_url == playback.uri.to_s
+    actual_uri = URI.parse(actual.uri)
+    playback_uri = URI.parse(playback.uri)
+
+    actual_host = actual_uri.host
+    actual_account_sid = (twilreapi_account_sid_regexp.match(actual.uri) || [])[1]
+    replaced_url = actual.uri.sub(actual_host, replacement_twilreapi_host).sub(actual_account_sid.to_s, replacement_twilreapi_account_sid)
+    replaced_uri = URI.parse(replaced_url)
+    replaced_uri.query = nil
+    playback_uri.query = nil
+
+    replaced_uri.to_s == playback_uri.to_s
   end
 end
 

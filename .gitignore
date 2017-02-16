@@ -18,3 +18,5 @@
 
 # Ignore vendored gems
 vendor/ruby
+
+remove_focus.rb

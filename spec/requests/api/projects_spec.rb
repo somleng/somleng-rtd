@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe "Projects" do
+  let(:query_params) { {} }
+
   def setup_scenario
   end
 
@@ -17,15 +19,53 @@ describe "Projects" do
     end
 
     def do_request
-      get(api_projects_path)
+      get(api_projects_path(query_params))
     end
 
     def assert_success!
       expect(response.code).to eq("200")
-      expect(response.body).to eq(projects.to_json)
     end
 
-    it { assert_success! }
+    context "valid request" do
+
+      context "without filtering" do
+        def assert_success!
+          super
+          expect(response.body).to eq(projects.to_json)
+        end
+
+        it { assert_success! }
+      end
+
+      context "filtering" do
+        let(:start_date) { Date.new(2016, 9, 30) }
+        let(:end_date) { Date.new(2016, 9, 30) }
+        let(:query_params) { {"StartDate" => start_date, "EndDate" => end_date} }
+        let(:project) { create(:project, :created_at => start_date) }
+
+        def setup_scenario
+          project
+          super
+        end
+
+        def assert_success!
+          super
+          expect(response.body).to eq([project].to_json)
+        end
+
+        it { assert_success! }
+      end
+    end
+
+    context "invalid request" do
+      let(:query_params) { { "StartDate" => "FooBarBaz"}  }
+
+      def assert_invalid_request!
+        expect(response.code).to eq("422")
+      end
+
+      it { assert_invalid_request! }
+    end
   end
 
   describe "GET '/api/projects/:id.json'" do

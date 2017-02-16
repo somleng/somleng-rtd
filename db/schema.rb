@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208030947) do
+ActiveRecord::Schema.define(version: 20170216050759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
 
+  create_table "project_aggregations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid     "project_id",         null: false
+    t.integer  "year",               null: false
+    t.integer  "month",              null: false
+    t.integer  "day",                null: false
+    t.integer  "sms_count",          null: false
+    t.integer  "phone_calls_count",  null: false
+    t.integer  "amount_saved_cents", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["project_id"], name: "index_project_aggregations_on_project_id", using: :btree
+    t.index ["year", "month", "day", "project_id"], name: "index_project_aggregations_on_date_and_project_id", unique: true, using: :btree
+  end
+
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer  "phone_calls_count",               null: false
-    t.integer  "sms_count",                       null: false
     t.string   "name",                            null: false
     t.text     "description"
     t.string   "homepage"
@@ -29,7 +41,6 @@ ActiveRecord::Schema.define(version: 20161208030947) do
     t.string   "status",                          null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.integer  "amount_saved_cents",              null: false
     t.uuid     "twilio_price_id",                 null: false
     t.index ["twilio_price_id"], name: "index_projects_on_twilio_price_id", using: :btree
   end
@@ -43,5 +54,6 @@ ActiveRecord::Schema.define(version: 20161208030947) do
     t.index ["country_code"], name: "index_twilio_prices_on_country_code", unique: true, using: :btree
   end
 
+  add_foreign_key "project_aggregations", "projects"
   add_foreign_key "projects", "twilio_prices"
 end
