@@ -4,6 +4,7 @@ describe Project do
   let(:factory) { :project }
 
   include_examples "twilio_timestamps"
+  include_examples "date_filters"
 
   describe "associations" do
     it { is_expected.to belong_to(:twilio_price) }

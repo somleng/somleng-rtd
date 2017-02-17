@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe ProjectAggregation do
+  include_examples "date_filters"
+
   let(:factory) { :project_aggregation }
 
   describe "associations" do
