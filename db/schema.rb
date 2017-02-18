@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218062012) do
+ActiveRecord::Schema.define(version: 20170218124950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20170218062012) do
     t.string   "country_code",                            null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.integer  "average_inbound_voice_price_microunits"
-    t.integer  "average_inbound_sms_price_microunits"
+    t.integer  "average_inbound_voice_price_microunits",  null: false
+    t.integer  "average_inbound_sms_price_microunits",    null: false
     t.index ["country_code"], name: "index_twilio_prices_on_country_code", unique: true, using: :btree
   end
 
