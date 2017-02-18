@@ -10,24 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216050759) do
+ActiveRecord::Schema.define(version: 20170218062012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
 
   create_table "project_aggregations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid     "project_id",         null: false
-    t.integer  "year",               null: false
-    t.integer  "month",              null: false
-    t.integer  "day",                null: false
-    t.integer  "sms_count",          null: false
-    t.integer  "phone_calls_count",  null: false
-    t.integer  "amount_saved_cents", null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.uuid     "project_id",                 null: false
+    t.date     "date",                       null: false
+    t.integer  "calls_count",                null: false
+    t.integer  "calls_price_cents",          null: false
+    t.integer  "calls_inbound_count",        null: false
+    t.integer  "calls_inbound_price_cents",  null: false
+    t.integer  "calls_outbound_count",       null: false
+    t.integer  "calls_outbound_price_cents", null: false
+    t.integer  "sms_count",                  null: false
+    t.integer  "sms_price_cents",            null: false
+    t.integer  "sms_inbound_count",          null: false
+    t.integer  "sms_inbound_price_cents",    null: false
+    t.integer  "sms_outbound_count",         null: false
+    t.integer  "sms_outbound_price_cents",   null: false
+    t.integer  "calls_minutes",              null: false
+    t.integer  "calls_inbound_minutes",      null: false
+    t.integer  "calls_outbound_minutes",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["date", "project_id"], name: "index_project_aggregations_on_date_and_project_id", unique: true, using: :btree
     t.index ["project_id"], name: "index_project_aggregations_on_project_id", using: :btree
-    t.index ["year", "month", "day", "project_id"], name: "index_project_aggregations_on_date_and_project_id", unique: true, using: :btree
   end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -51,6 +61,8 @@ ActiveRecord::Schema.define(version: 20170216050759) do
     t.string   "country_code",                            null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.integer  "average_inbound_voice_price_microunits"
+    t.integer  "average_inbound_sms_price_microunits"
     t.index ["country_code"], name: "index_twilio_prices_on_country_code", unique: true, using: :btree
   end
 

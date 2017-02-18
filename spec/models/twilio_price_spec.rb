@@ -16,18 +16,14 @@ describe TwilioPrice do
       it { is_expected.to be_valid }
     end
 
-    it { is_expected.to validate_numericality_of(:average_outbound_voice_price).is_greater_than_or_equal_to(0) }
-    it { is_expected.to validate_numericality_of(:average_outbound_sms_price).is_greater_than_or_equal_to(0) }
     it { is_expected.to validate_presence_of(:country_code) }
     it { is_expected.to validate_inclusion_of(:country_code).in_array(ISO3166::Country.codes) }
-  end
 
-  describe "#average_outbound_voice_price" do
-    it { is_expected.to monetize(:average_outbound_voice_price) }
-  end
-
-  describe "#average_outbound_sms_price" do
-    it { is_expected.to monetize(:average_outbound_sms_price) }
+    [:outbound_voice, :outbound_sms, :inbound_voice, :inbound_sms].each do |price_type|
+      price_column = "average_#{price_type}_price"
+      it { is_expected.to validate_numericality_of(price_column).is_greater_than_or_equal_to(0) }
+      it { is_expected.to monetize(price_column) }
+    end
   end
 
   describe "#to_json" do
@@ -46,20 +42,6 @@ describe TwilioPrice do
     end
 
     it { assert_json! }
-  end
-
-  describe "#calculate_outbound_voice_price(minutes)" do
-    let(:minutes) { 2 }
-    let(:result) { subject.calculate_outbound_voice_price(minutes) }
-    subject { create(factory, :average_outbound_voice_price => Money.new(44000, asserted_currency)) }
-    it { expect(result).to eq(Money.new(9, "USD")) }
-  end
-
-  describe "#calculate_outbound_sms_price(count)" do
-    let(:count) { 2 }
-    let(:result) { subject.calculate_outbound_sms_price(count) }
-    subject { create(factory, :average_outbound_sms_price => Money.new(44000, asserted_currency)) }
-    it { expect(result).to eq(Money.new(9, "USD")) }
   end
 
   describe "price display methods" do
@@ -101,6 +83,8 @@ describe TwilioPrice do
     let(:country_code) { "KH" }
     let(:asserted_average_outbound_voice_price) { Money.new(100000, asserted_currency) }
     let(:asserted_average_outbound_sms_price) { Money.new(44000, asserted_currency) }
+    let(:asserted_average_inbound_voice_price) { Money.new(0, asserted_currency) }
+    let(:asserted_average_inbound_sms_price) { Money.new(0, asserted_currency) }
 
     def env_vars
       {
@@ -117,6 +101,8 @@ describe TwilioPrice do
       expect(twilio_price).to be_persisted
       expect(twilio_price.average_outbound_voice_price).to eq(asserted_average_outbound_voice_price)
       expect(twilio_price.average_outbound_sms_price).to eq(asserted_average_outbound_sms_price)
+      expect(twilio_price.average_inbound_voice_price).to eq(asserted_average_inbound_voice_price)
+      expect(twilio_price.average_inbound_sms_price).to eq(asserted_average_inbound_sms_price)
     end
 
     before do
@@ -145,8 +131,20 @@ describe TwilioPrice do
       end
 
       context "countries are specified via args" do
-        let(:countries) { ["kh"] }
-        it { expect(new_twilio_price).to be_persisted }
+        let(:countries) { [country_code] }
+
+        context "fetching Cambodia" do
+          it { expect(new_twilio_price).to be_persisted }
+        end
+
+        context "fetching Estonia", :cassette => :fetch_twilio_prices_estonia do
+          let(:country_code) { "EE" }
+          let(:asserted_average_outbound_voice_price) { Money.new(325433, asserted_currency) }
+          let(:asserted_average_outbound_sms_price) { Money.new(89375, asserted_currency) }
+          let(:asserted_average_inbound_voice_price) { Money.new(7500, asserted_currency) }
+          let(:asserted_average_inbound_sms_price) { Money.new(7500, asserted_currency) }
+          it { assert_price_updated!(new_twilio_price) }
+        end
       end
 
       context "no countries are specified" do

@@ -4,7 +4,10 @@ describe Project do
   let(:factory) { :project }
 
   include_examples "twilio_timestamps"
-  include_examples "date_filters"
+
+  include_examples "date_filters" do
+    let(:date_column) { :created_at }
+  end
 
   describe "associations" do
     it { is_expected.to belong_to(:twilio_price) }

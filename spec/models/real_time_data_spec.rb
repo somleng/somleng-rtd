@@ -5,8 +5,12 @@ describe RealTimeData do
     let(:json) { JSON.parse(subject.to_json) }
     let(:asserted_json_keys) {
       [
-        "date_updated", "phone_calls_count", "sms_count", "projects_count",
-        "amount_saved"
+        "date_updated",
+        "calls_count", "calls_outbound_count", "calls_inbound_count",
+        "calls_minutes", "calls_outbound_minutes", "calls_inbound_minutes",
+        "sms_count", "sms_outbound_count", "sms_inbound_count",
+        "total_amount_spent", "total_equivalent_twilio_price",
+        "total_amount_saved",  "projects_count"
       ]
     }
 
@@ -43,9 +47,8 @@ describe RealTimeData do
       create_list(
         :project_aggregation,
         2,
-        :phone_calls_count => 3,
-        :sms_count => 5,
-        :amount_saved => Money.new(100, ProjectAggregation::DEFAULT_CURRENCY)
+        :calls_count => 3,
+        :sms_count => 5
       )
     }
 
@@ -58,10 +61,10 @@ describe RealTimeData do
 
     context "given there are no projects" do
       def assert_no_data!
-        expect(subject.phone_calls_count).to eq(0)
+        expect(subject.calls_count).to eq(0)
         expect(subject.sms_count).to eq(0)
         expect(subject.projects_count).to eq(0)
-        expect(subject.amount_saved).to eq("$0.00")
+        expect(subject.total_amount_saved).to eq("$0.00")
       end
 
       it { assert_no_data! }
@@ -73,10 +76,10 @@ describe RealTimeData do
       end
 
       def assert_data!
-        expect(subject.phone_calls_count).to eq(6)
+        expect(subject.calls_count).to eq(6)
         expect(subject.sms_count).to eq(10)
         expect(subject.projects_count).to eq(2)
-        expect(subject.amount_saved).to eq("$2.00")
+        expect(subject.total_amount_saved).to eq("$0.00")
       end
 
       it { assert_data! }

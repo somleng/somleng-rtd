@@ -30,18 +30,24 @@ class Project < ApplicationRecord
   delegate :country_name, :to => :twilio_price
   delegate :voice_url, :sms_url, :to => :twilio_price, :prefix => true
 
+  delegate :calls_count, :calls_inbound_count, :calls_outbound_count,
+           :calls_minutes, :calls_inbound_minutes, :calls_outbound_minutes,
+           :sms_count, :sms_inbound_count, :sms_outbound_count,
+           :total_amount_saved, :total_amount_spent, :total_equivalent_twilio_price,
+           :to => :project_aggregations
+
   include AASM
 
   aasm :column => :status do
     state :published, :initial => true
   end
 
-  def self.fetch!
-    all.find_each { |project| project.fetch! }
+  def self.fetch!(date = nil)
+    all.find_each { |project| project.fetch!(date) }
   end
 
-  def fetch!
-    project_aggregations.by_date(Date.today).first_or_initialize.fetch!
+  def fetch!(date = nil)
+    project_aggregations.by_date(date || Date.today).first_or_initialize.fetch!
   end
 
   private

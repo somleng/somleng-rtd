@@ -14,18 +14,23 @@ FactoryGirl.define do
 
   factory :project_aggregation do
     project
-    phone_calls_count 0
-    sms_count 0
-    amount_saved Money.new(0)
-    year 2015
-    month 9
-    day 30
+    date { Date.new(2016, 9, 30) }
+    [:calls, :calls_inbound, :calls_outbound, :sms, :sms_inbound, :sms_outbound].each do |aggregation|
+      send("#{aggregation}_count", 0)
+      send("#{aggregation}_price_cents", 0)
+    end
+
+    calls_minutes 0
+    calls_inbound_minutes 0
+    calls_outbound_minutes 0
   end
 
   factory :twilio_price do
     country_code "KH"
-    average_outbound_voice_price Money.new(100000)
-    average_outbound_sms_price Money.new(50000)
+    average_outbound_voice_price_microunits 100000
+    average_outbound_sms_price_microunits 50000
+    average_inbound_voice_price_microunits 7000
+    average_inbound_sms_price_microunits 7500
   end
 
   factory :query_filter do

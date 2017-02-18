@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pricing.twilio.com/v1/Voice/Countries/EE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - "<ENCODED AUTH HEADER>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 18 Feb 2017 07:12:51 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.470'
+      Twilio-Request-Id:
+      - RQeec75b7fd6e44227beec870dd9c41e49
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '996'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"country": "Estonia", "iso_country": "EE", "outbound_prefix_prices":
+        [{"prefixes": ["37240", "372531", "3725411193", "3725411194", "37254135",
+        "37254149", "37256114", "37257466", "37257469", "37258456", "37258620", "37258820",
+        "37258990", "37258991", "37258992", "37259121", "37259122", "3725944198",
+        "3725944199", "3725995", "3725999568", "3725999569", "372599957", "372599958",
+        "37270", "37281", "37282", "3729008"], "friendly_name": "Programmable Outbound
+        Minute - Estonia - Other", "base_price": "0.465", "current_price": "0.465"},
+        {"prefixes": ["3725"], "friendly_name": "Programmable Outbound Minute - Estonia
+        - Mobile", "base_price": "0.4783", "current_price": "0.4783"}, {"prefixes":
+        ["372"], "friendly_name": "Programmable Outbound Minute - Estonia", "base_price":
+        "0.033", "current_price": "0.033"}], "inbound_call_prices": [{"number_type":
+        "national", "base_price": "0.0075", "current_price": "0.0075"}], "price_unit":
+        "USD", "url": "https://pricing.twilio.com/v1/Voice/Countries/EE"}'
+    http_version: 
+  recorded_at: Sat, 18 Feb 2017 07:12:52 GMT
+- request:
+    method: get
+    uri: https://pricing.twilio.com/v1/Messaging/Countries/EE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - "<ENCODED AUTH HEADER>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 18 Feb 2017 07:12:58 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.313'
+      Twilio-Request-Id:
+      - RQc4694d5677de47c2ba4bcccdfdf578b8
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '1114'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"url": "https://pricing.twilio.com/v1/Messaging/Countries/EE", "country":
+        "Estonia", "iso_country": "EE", "price_unit": "USD", "outbound_sms_prices":
+        [{"mcc": "248", "mnc": "1", "carrier": "EMT", "prices": [{"number_type": "mobile",
+        "base_price": "0.1040", "current_price": "0.1040"}, {"number_type": "local",
+        "base_price": "0.1040", "current_price": "0.1040"}]}, {"mcc": "248", "mnc":
+        "2", "carrier": "Elisa", "prices": [{"number_type": "mobile", "base_price":
+        "0.0845", "current_price": "0.0845"}, {"number_type": "local", "base_price":
+        "0.0845", "current_price": "0.0845"}]}, {"mcc": "248", "mnc": "3", "carrier":
+        "Tele2", "prices": [{"number_type": "mobile", "base_price": "0.0845", "current_price":
+        "0.0845"}, {"number_type": "local", "base_price": "0.0845", "current_price":
+        "0.0845"}]}, {"mcc": "248", "mnc": "999", "carrier": "Other", "prices": [{"number_type":
+        "mobile", "base_price": "0.0845", "current_price": "0.0845"}, {"number_type":
+        "local", "base_price": "0.0845", "current_price": "0.0845"}]}], "inbound_sms_prices":
+        [{"number_type": "mobile", "base_price": "0.0075", "current_price": "0.0075"}]}'
+    http_version: 
+  recorded_at: Sat, 18 Feb 2017 07:12:58 GMT
+recorded_with: VCR 3.0.3

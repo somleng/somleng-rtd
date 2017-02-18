@@ -23,19 +23,59 @@ class RealTimeData
     projects.count
   end
 
-  def phone_calls_count
-    project_aggregations_scope.between_dates(start_date, end_date).sum(:phone_calls_count)
+  def calls_count
+    filtered_project_aggregations.calls_count
+  end
+
+  def calls_inbound_count
+    filtered_project_aggregations.calls_inbound_count
+  end
+
+  def calls_outbound_count
+    filtered_project_aggregations.calls_outbound_count
+  end
+
+  def calls_minutes
+    filtered_project_aggregations.calls_minutes
+  end
+
+  def calls_inbound_minutes
+    filtered_project_aggregations.calls_inbound_minutes
+  end
+
+  def calls_outbound_minutes
+    filtered_project_aggregations.calls_outbound_minutes
   end
 
   def sms_count
-    project_aggregations_scope.between_dates(start_date, end_date).sum(:sms_count)
+    filtered_project_aggregations.sms_count
   end
 
-  def amount_saved
-    project_aggregations_scope.between_dates(start_date, end_date).amount_saved.format
+  def sms_inbound_count
+    filtered_project_aggregations.sms_inbound_count
+  end
+
+  def sms_outbound_count
+    filtered_project_aggregations.sms_outbound_count
+  end
+
+  def total_amount_spent
+    filtered_project_aggregations.total_amount_spent.format
+  end
+
+  def total_equivalent_twilio_price
+    filtered_project_aggregations.total_equivalent_twilio_price.format
+  end
+
+  def total_amount_saved
+    filtered_project_aggregations.total_amount_saved.format
   end
 
   private
+
+  def filtered_project_aggregations
+    project_aggregations_scope.between_dates(start_date, end_date)
+  end
 
   def projects
     projects_scope.between_dates(start_date, end_date)
@@ -51,10 +91,19 @@ class RealTimeData
 
   def json_methods
     super.merge(
-      :phone_calls_count => nil,
+      :calls_count => nil,
+      :calls_outbound_count => nil,
+      :calls_inbound_count => nil,
+      :calls_minutes => nil,
+      :calls_outbound_minutes => nil,
+      :calls_inbound_minutes => nil,
       :sms_count => nil,
+      :sms_outbound_count => nil,
+      :sms_inbound_count => nil,
       :projects_count => nil,
-      :amount_saved => nil
+      :total_amount_spent => nil,
+      :total_equivalent_twilio_price => nil,
+      :total_amount_saved => nil
     )
   end
 end

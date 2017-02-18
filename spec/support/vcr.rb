@@ -17,7 +17,8 @@ VCR.configure do |c|
   end
 
   c.filter_sensitive_data(replacement_twilreapi_host) do |interaction|
-    URI.parse(interaction.request.uri).host
+    actual_host = URI.parse(interaction.request.uri).host
+    actual_host if actual_host !~ /twilio.com/
   end
 
   c.register_request_matcher(:twilreapi_api_resource) do |actual, playback|

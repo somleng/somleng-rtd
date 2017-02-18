@@ -1,7 +1,7 @@
 shared_examples_for "date_filters" do
   describe ".between_dates(start_date, end_date)" do
-    let(:created_at) { Time.utc("2015", "9", "30", "23", "33", "46") }
-    subject { create(factory, :created_at => created_at) }
+    let(:date_timestamp) { Time.utc("2015", "9", "30", "23", "33", "46") }
+    subject { create(factory, date_column => date_timestamp) }
 
     before do
       subject

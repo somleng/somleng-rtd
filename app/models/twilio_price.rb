@@ -19,6 +19,16 @@ class TwilioPrice < ApplicationRecord
            :with_currency => DEFAULT_CURRENCY,
            :numericality => { :greater_than_or_equal_to => 0 }
 
+  monetize :average_inbound_voice_price_microunits,
+           :as => :average_inbound_voice_price,
+           :with_currency => DEFAULT_CURRENCY,
+           :numericality => { :greater_than_or_equal_to => 0 }
+
+  monetize :average_inbound_sms_price_microunits,
+           :as => :average_inbound_sms_price,
+           :with_currency => DEFAULT_CURRENCY,
+           :numericality => { :greater_than_or_equal_to => 0 }
+
   delegate :available_countries,
            :to => :class
 
@@ -50,8 +60,14 @@ class TwilioPrice < ApplicationRecord
     self.average_outbound_voice_price = calculate_average_price(
       @voice_pricing.outbound_prefix_prices
     )
+    self.average_inbound_voice_price = calculate_average_price(
+      @voice_pricing.inbound_call_prices
+    )
     self.average_outbound_sms_price = calculate_average_price(
       @sms_pricing.outbound_sms_prices.map { |price_element| price_element["prices"] }.flatten
+    )
+    self.average_inbound_sms_price = calculate_average_price(
+      @sms_pricing.inbound_sms_prices
     )
     save!
   end
@@ -72,12 +88,8 @@ class TwilioPrice < ApplicationRecord
     url(:sms)
   end
 
-  def calculate_outbound_voice_price(minutes)
-    (minutes * average_outbound_voice_price).exchange_to("USD")
-  end
-
-  def calculate_outbound_sms_price(count)
-    (count * average_outbound_sms_price).exchange_to("USD")
+  def self.exchange_to_usd(amount_in_microunits)
+    Money.new(amount_in_microunits, DEFAULT_CURRENCY).exchange_to("USD")
   end
 
   private
@@ -106,7 +118,7 @@ class TwilioPrice < ApplicationRecord
     Money.new(
       twilio_pricing_data.inject(0.0) { |sum, price_element|
         sum + price_element["base_price"].to_f * TWILIO_PRICE_TO_CURRENCY_RATIO
-      } / twilio_pricing_data.size,
+      } / (twilio_pricing_data.size.nonzero? || 1),
       DEFAULT_CURRENCY
     )
   end

@@ -8,31 +8,120 @@
       ago
     - else
       never
+
   .row
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
       .panel.panel-primary
         .panel-heading
           = fa_icon("building", :text => "Projects")
         .panel-body
-          = number_to_human(@real_time_data.projects_count)
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+          %p
+            = pluralize(number_to_human(@real_time_data.projects_count), "Project")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
       .panel.panel-warning
         .panel-heading
-          = fa_icon("phone", :text => "Phone Calls")
+          = fa_icon("plus-circle")
+          = fa_icon("phone", :text => "Total Calls")
         .panel-body
-          = number_to_human(@real_time_data.phone_calls_count)
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+          %p
+            = pluralize(number_to_human(@real_time_data.calls_count), "Call")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-danger
+        .panel-heading
+          = fa_icon("plus-circle")
+          = fa_icon("clock-o", :text => "Total Call Minutes")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.calls_minutes), "Minute")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
       .panel.panel-info
         .panel-heading
-          = fa_icon("wechat", :text => "SMS")
+          = fa_icon("plus-circle")
+          = fa_icon("wechat", :text => "Total SMS")
         .panel-body
-          = number_to_human(@real_time_data.sms_count)
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+          %p
+            = pluralize(number_to_human(@real_time_data.sms_count), "Message")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
       .panel.panel-success
         .panel-heading
-          = fa_icon("money", :text => "Savings")
+          = fa_icon("bank", :text => "Total Amount Saved")
         .panel-body
-          = @real_time_data.amount_saved
+          %p
+            = @real_time_data.total_amount_saved
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-primary
+        .panel-heading
+          = fa_icon("arrow-circle-left")
+          = fa_icon("phone", :text => "Inbound Calls")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.calls_inbound_count), "Call")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-warning
+        .panel-heading
+          = fa_icon("arrow-circle-right")
+          = fa_icon("phone", :text => "Outbound Calls")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.calls_outbound_count), "Call")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-danger
+        .panel-heading
+          = fa_icon("arrow-circle-left")
+          = fa_icon("clock-o", :text => "Inbound Call Minutes")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.calls_inbound_minutes), "Minute")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-info
+        .panel-heading
+          = fa_icon("arrow-circle-right")
+          = fa_icon("clock-o", :text => "Outbound Call Minutes")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.calls_outbound_minutes), "Minute")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-success
+        .panel-heading
+          = fa_icon("arrow-circle-left")
+          = fa_icon("wechat", :text => "Inbound SMS")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.sms_inbound_count), "Message")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-primary
+        .panel-heading
+          = fa_icon("arrow-circle-right")
+          = fa_icon("wechat", :text => "Outbound SMS")
+        .panel-body
+          %p
+            = pluralize(number_to_human(@real_time_data.sms_outbound_count), "Message")
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-warning
+        .panel-heading
+          = fa_icon("money", :text => "Total Amount Spent")
+        .panel-body
+          %p
+            = @real_time_data.total_amount_spent
+
+    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+      .panel.panel-danger
+        .panel-heading
+          = fa_icon("tags", :text => "Total Equivalent Twilio Price")
+        .panel-body
+          %p
+            = @real_time_data.total_equivalent_twilio_price
 
 %hr
 
@@ -54,47 +143,103 @@
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("file-text-o", :text => "= Description")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("phone", :text => "= Phone Calls")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("wechat", :text => "= SMS")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("money", :text => "= Savings")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("globe", :text => "= Location")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("edge", :text => "= Homepage")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("tag", :text => "= Comparison Voice Pricing")
+              = fa_icon("arrow-circle-left")
+              = fa_icon("phone", :text => "= Inbound Calls")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("tags", :text => "= Comparison SMS Pricing")
-
+              = fa_icon("arrow-circle-right")
+              = fa_icon("phone", :text => "= Outbound Calls")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("plus-circle")
+              = fa_icon("phone", :text => "= Total Calls")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("arrow-circle-left")
+              = fa_icon("clock-o", :text => "= Inbound Call Minutes")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("arrow-circle-right")
+              = fa_icon("clock-o", :text => "= Outbound Call Minutes")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("plus-circle")
+              = fa_icon("clock-o", :text => "= Total Call Minutes")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("arrow-circle-left")
+              = fa_icon("wechat", :text => "= Inbound SMS")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("arrow-circle-right")
+              = fa_icon("wechat", :text => "= Outbound SMS")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("plus-circle")
+              = fa_icon("wechat", :text => "= Total SMS")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("money", :text => "= Total Amount Spent")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("money")
+              = fa_icon("tags", :text => "= Total Equivalent Twilio Price")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("bank", :text => "= Total Amount Saved")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("tag", :text => "= Twilio Voice Pricing")
+            .col-xs-6.col-sm-6.col-md-3.col-lg-3
+              = fa_icon("tags", :text => "= Twilio SMS Pricing")
         %thead
           %tr
             %th
               = fa_icon("hashtag")
-            %th{:title => "Name"}
+            %th
               = fa_icon("pencil")
             %th{:title => "Description"}
               = fa_icon("file-text-o")
-            %th{:title => "Phone Calls"}
-              = fa_icon("phone")
-            %th{:title => "SMS"}
-              = fa_icon("wechat")
-            %th{:title => "Savings"}
-              = fa_icon("money")
             %th{:title => "Project Location"}
               = fa_icon("globe")
             %th{:title => "Project Homepage"}
               = fa_icon("edge")
-            %th{:title => "Comparison Voice Pricing"}
+            %th{:title => "Inbound Calls"}
+              = fa_icon("arrow-circle-left")
+              = fa_icon("phone")
+            %th{:title => "Outbound Calls"}
+              = fa_icon("arrow-circle-right")
+              = fa_icon("phone")
+            %th{:title => "Total Calls"}
+              = fa_icon("plus-circle")
+              = fa_icon("phone")
+            %th{:title => "Inbound Call Minutes"}
+              = fa_icon("arrow-circle-left")
+              = fa_icon("clock-o")
+            %th{:title => "Outbound Call Minutes"}
+              = fa_icon("arrow-circle-right")
+              = fa_icon("clock-o")
+            %th{:title => "Total Call Minutes"}
+              = fa_icon("plus-circle")
+              = fa_icon("clock-o")
+            %th{:title => "Inbound SMS"}
+              = fa_icon("arrow-circle-left")
+              = fa_icon("wechat")
+            %th{:title => "Outbound SMS"}
+              = fa_icon("arrow-circle-right")
+              = fa_icon("wechat")
+            %th{:title => "Total SMS"}
+              = fa_icon("plus-circle")
+              = fa_icon("wechat")
+            %th{:title => "Total Amount Spent"}
+              = fa_icon("money")
+            %th{:title => "Equivalent Twilio Price"}
+              = fa_icon("money")
+              = fa_icon("tags")
+            %th{:title => "Total Amount Saved"}
+              = fa_icon("bank")
+            %th{:title => "Twilio Voice Pricing"}
               = fa_icon("tag")
-            %th{:title => "Comparison SMS Pricing"}
+            %th{:title => "Twilio SMS Pricing"}
               = fa_icon("tags")
         %tbody
           - @projects.each_with_index do |project, index|
             %tr
               %th{:scope => "row"}
                 = index + 1
+
               %td{:title => "Name"}
                 = project.name
               %td{:title => "Description"}
@@ -102,17 +247,50 @@
                 %p
                   %span
                     = link_to("Read More", project.homepage, :title => "Project Homepage", :target => "_blank")
-              %td{:title => "Phone Calls"}
-                = number_to_human(project.phone_calls_count)
-              %td{:title => "SMS"}
-                = number_to_human(project.sms_count)
-              %td{:title => "Savings"}
-                = project.amount_saved.format
               %td{:title => "Project Location"}
                 = project.country_name
+
               %td{:title => "Project Homepage"}
                 = link_to(project.homepage, :title => "Project Homepage", :target => "_blank") do
                   = fa_icon("edge")
+
+
+              %td{:title => "Inbound Calls"}
+                = pluralize(number_to_human(project.calls_inbound_count), "Call")
+
+              %td{:title => "Outbound Calls"}
+                = pluralize(number_to_human(project.calls_outbound_count), "Call")
+
+              %td{:title => "Total Calls"}
+                = pluralize(number_to_human(project.calls_count), "Call")
+
+              %td{:title => "Inbound Minutes"}
+                = pluralize(number_to_human(project.calls_inbound_minutes), "Minute")
+
+              %td{:title => "Outbound Minutes"}
+                = pluralize(number_to_human(project.calls_outbound_minutes), "Minute")
+
+              %td{:title => "Total Minutes"}
+                = pluralize(number_to_human(project.calls_minutes), "Minute")
+
+              %td{:title => "Inbound SMS"}
+                = pluralize(number_to_human(project.sms_inbound_count), "Message")
+
+              %td{:title => "Outbound SMS"}
+                = pluralize(number_to_human(project.sms_outbound_count), "Message")
+
+              %td{:title => "Total SMS"}
+                = pluralize(number_to_human(project.sms_count), "Message")
+
+              %td{:title => "Total Amount Spent"}
+                = project.total_amount_spent.format
+
+              %td{:title => "Total Equivalent Twilio Price"}
+                = project.total_equivalent_twilio_price.format
+
+              %td{:title => "Total Amount Saved"}
+                = project.total_amount_saved.format
+
               %td{:title => "Comparison Voice Pricing"}
                 = link_to(project.twilio_price_voice_url, :title => "Twilio Voice Pricing", :target => "_blank") do
                   = fa_icon("tag")
@@ -129,7 +307,7 @@
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
       %section#get_real_time_data
         %h3
-          GET Real Time Data
+          Fetch Real Time Data
         %p
           Retuns aggregate data about all the projects that are using Somleng.
         %h5
@@ -137,19 +315,27 @@
         %code
           = api_real_time_data_url
         %h5
-          CURL Request
+          Example: Fetch Real Time Data
         %pre
           = preserve do
             :escaped
-              $ curl #{api_real_time_data_url}
+              $ curl "#{api_real_time_data_url}"
         %h5
-          Response
+          Example: Filtering by Date
+        %p
+          Fetches Real Time Data within the given date range.
+        %pre
+          = preserve do
+            :escaped
+              $ curl "#{api_real_time_data_url("StartDate" => 1.month.ago.beginning_of_month.to_date, "EndDate" => 1.month.ago.end_of_month.to_date)}"
+        %h5
+          Sample Response
         %pre
           = preserve do
             = JSON.pretty_generate(JSON.parse(@real_time_data.to_json))
       %section#get_projects
         %h3
-          GET Projects
+          Fetch Projects
         %p
           Returns a list of Projects which are currently using Somleng.
         %h5
@@ -157,36 +343,64 @@
         %code
           = api_projects_url
         %h5
-          CURL Request
+          Example: Fetch all Projects
         %pre
           = preserve do
             :escaped
               $ curl #{api_projects_url}
+        %h5
+          Example: Filtering by Date
+        %p
+          Fetches all projects created within in given date range.
+        %pre
+          = preserve do
+            :escaped
+              $ curl "#{api_projects_url("StartDate" => 1.month.ago.beginning_of_month.to_date, "EndDate" => 1.month.ago.end_of_month.to_date)}"
         - if @projects.any?
           %h5
-            Response
+            Sample Response
           %pre
             = preserve do
               = JSON.pretty_generate(JSON.parse(@projects.limit(2).to_json))
+      - project_id = (@sample_project && @sample_project.id) || ":project_id"
       %section#get_project
-        - project_id = (@sample_project && @sample_project.id) || ":project_id"
         %h3
-          GET Project
+          Fetch a Project
         %p
-          Returns a single project given an id
+          Returns a single project given an id.
         %h5
           API Endpoint
         %code
           = api_project_url(project_id)
         %h5
-          CURL Request
+          Example: Fetch a Project
         %pre
           = preserve do
             :escaped
-              $ curl #{api_project_url(project_id)}
+              $ curl "#{api_project_url(project_id)}"
         - if @sample_project
           %h5
-            Response
+            Sample Response
           %pre
             = preserve do
               = JSON.pretty_generate(JSON.parse(@sample_project.to_json))
+      %section#get_project_real_time_data
+        %h3
+          Fetch Real Time Data about a given Project
+        %p
+          Returns Real Time Data for a project given a project id.
+        %h5
+          API Endpoint
+        %code
+          = api_project_real_time_data_url(project_id)
+        %h5
+          Example: Fetch Real Time Data for a Project
+        %pre
+          = preserve do
+            :escaped
+              $ curl "#{api_project_real_time_data_url(project_id)}"
+        %h5
+          Sample Response
+        %pre
+          = preserve do
+            = JSON.pretty_generate(JSON.parse(@real_time_data.to_json))
