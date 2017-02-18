@@ -126,7 +126,6 @@ class ProjectAggregation < ApplicationRecord
     self.calls_minutes ||= 0
     self.calls_price ||= Money.new(0, DEFAULT_CURRENCY)
 
-
     self.calls_inbound_count ||= 0
     self.calls_inbound_minutes ||= 0
     self.calls_inbound_price ||= Money.new(0, DEFAULT_CURRENCY)
