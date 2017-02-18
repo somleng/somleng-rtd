@@ -22,44 +22,43 @@ describe ProjectAggregation do
     context "persisted" do
       subject { create(factory) }
       it { is_expected.to validate_uniqueness_of(:date).scoped_to([:project_id]).case_insensitive }
-    end
 
-    [:calls, :calls_inbound, :calls_outbound, :sms, :sms_inbound, :sms_outbound].each do |aggregation|
-      count_column = "#{aggregation}_count"
-      it { is_expected.to validate_presence_of(count_column) }
+      [:calls, :calls_inbound, :calls_outbound, :sms, :sms_inbound, :sms_outbound].each do |aggregation|
+        count_column = "#{aggregation}_count"
+        it { is_expected.to validate_presence_of(count_column) }
 
+        it {
+          is_expected.to validate_numericality_of(
+            count_column
+          ).only_integer.is_greater_than_or_equal_to(0)
+        }
+
+        price_column = "#{aggregation}_price"
+        it { is_expected.to validate_numericality_of(price_column) }
+        it { is_expected.to monetize(price_column) }
+      end
+
+      it { is_expected.to validate_presence_of(:calls_minutes) }
       it {
         is_expected.to validate_numericality_of(
-          count_column
+          :calls_minutes
         ).only_integer.is_greater_than_or_equal_to(0)
       }
 
-      price_column = "#{aggregation}_price"
-      it { is_expected.to validate_numericality_of(price_column) }
-      it { is_expected.to monetize(price_column) }
+      it { is_expected.to validate_presence_of(:calls_inbound_minutes) }
+      it {
+        is_expected.to validate_numericality_of(
+          :calls_inbound_minutes
+        ).only_integer.is_greater_than_or_equal_to(0)
+      }
+
+      it { is_expected.to validate_presence_of(:calls_outbound_minutes) }
+      it {
+        is_expected.to validate_numericality_of(
+          :calls_outbound_minutes
+        ).only_integer.is_greater_than_or_equal_to(0)
+      }
     end
-
-
-    it { is_expected.to validate_presence_of(:calls_minutes) }
-    it {
-      is_expected.to validate_numericality_of(
-        :calls_minutes
-      ).only_integer.is_greater_than_or_equal_to(0)
-    }
-
-    it { is_expected.to validate_presence_of(:calls_inbound_minutes) }
-    it {
-      is_expected.to validate_numericality_of(
-        :calls_inbound_minutes
-      ).only_integer.is_greater_than_or_equal_to(0)
-    }
-
-    it { is_expected.to validate_presence_of(:calls_outbound_minutes) }
-    it {
-      is_expected.to validate_numericality_of(
-        :calls_outbound_minutes
-      ).only_integer.is_greater_than_or_equal_to(0)
-    }
   end
 
   describe ".by_date(date)" do

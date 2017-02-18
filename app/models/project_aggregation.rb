@@ -22,6 +22,8 @@ class ProjectAggregation < ApplicationRecord
   validates :calls_minutes, :calls_inbound_minutes, :calls_outbound_minutes,
             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
 
+  before_validation :set_defaults, :on => :create
+
   delegate :twilreapi_account_sid,
            :twilreapi_auth_token,
            :twilreapi_host,
@@ -118,6 +120,30 @@ class ProjectAggregation < ApplicationRecord
   end
 
   private
+
+  def set_defaults
+    self.calls_count ||= 0
+    self.calls_minutes ||= 0
+    self.calls_price ||= Money.new(0, DEFAULT_CURRENCY)
+
+
+    self.calls_inbound_count ||= 0
+    self.calls_inbound_minutes ||= 0
+    self.calls_inbound_price ||= Money.new(0, DEFAULT_CURRENCY)
+
+    self.calls_outbound_count ||= 0
+    self.calls_outbound_minutes ||= 0
+    self.calls_outbound_price ||= Money.new(0, DEFAULT_CURRENCY)
+
+    self.sms_count ||= 0
+    self.sms_price ||= 0
+
+    self.sms_inbound_count ||= 0
+    self.sms_inbound_price ||= 0
+
+    self.sms_outbound_count ||= 0
+    self.sms_outbound_price ||= 0
+  end
 
   def self.between_dates_column_name
     :date
