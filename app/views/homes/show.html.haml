@@ -10,7 +10,7 @@
       never
 
   .row
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-primary
         .panel-heading
           = fa_icon("building", :text => "Projects")
@@ -18,7 +18,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.projects_count), "Project")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-success
         .panel-heading
           = fa_icon("plus-circle")
@@ -27,7 +27,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.calls_count), "Call")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-info
         .panel-heading
           = fa_icon("plus-circle")
@@ -36,7 +36,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.calls_minutes), "Minute")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-warning
         .panel-heading
           = fa_icon("plus-circle")
@@ -45,7 +45,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.sms_count), "Message")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-danger
         .panel-heading
           = fa_icon("bank", :text => "Total Amount Saved")
@@ -53,7 +53,7 @@
           %p
             = @real_time_data.total_amount_saved
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-primary
         .panel-heading
           = fa_icon("arrow-circle-left")
@@ -62,7 +62,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.calls_inbound_count), "Call")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-success
         .panel-heading
           = fa_icon("arrow-circle-left")
@@ -71,7 +71,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.calls_inbound_minutes), "Minute")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-info
         .panel-heading
           = fa_icon("arrow-circle-right")
@@ -80,7 +80,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.calls_outbound_count), "Call")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-warning
         .panel-heading
           = fa_icon("arrow-circle-right")
@@ -89,7 +89,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.calls_outbound_minutes), "Minute")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-danger
         .panel-heading
           = fa_icon("arrow-circle-left")
@@ -98,7 +98,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.sms_inbound_count), "Message")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-primary
         .panel-heading
           = fa_icon("arrow-circle-right")
@@ -107,7 +107,7 @@
           %p
             = pluralize(number_to_human(@real_time_data.sms_outbound_count), "Message")
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-success
         .panel-heading
           = fa_icon("money", :text => "Total Amount Spent")
@@ -115,7 +115,7 @@
           %p
             = @real_time_data.total_amount_spent
 
-    .col-xs-6.col-sm-6.col-md-4.col-lg-4
+    .col-xs-6.col-sm-6.col-md-3.col-lg-3
       .panel.panel-info
         .panel-heading
           = fa_icon("tags", :text => "Total Equivalent Twilio Price")
