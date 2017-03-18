@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-ruby(File.read(".ruby-version").strip) if File.exist?(".ruby-version")
+ruby(File.read(".ruby-version").strip) if ENV["GEMFILE_LOAD_RUBY_VERSION"].to_i == 1 && File.exist?(".ruby-version")
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
 gem 'rails', '~> 5.0.1', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
