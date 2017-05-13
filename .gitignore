@@ -19,4 +19,8 @@
 # Ignore vendored gems
 vendor/ruby
 
+# SimpleCov
+coverage
+
+# misc
 remove_focus.rb

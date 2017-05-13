@@ -31,12 +31,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :test do
-  gem 'vcr'
-  gem 'webmock'
-  gem 'capybara'
-end
-
 group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
@@ -53,4 +47,9 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'capybara'
+  gem "simplecov", :require => false
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
