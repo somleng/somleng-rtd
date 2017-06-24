@@ -21,9 +21,3 @@ $ heroku config:set TWILIO_ACCOUNT_SID=your_twilio_account_sid TWILIO_AUTH_TOKEN
 ```
 $ heroku run rails projects:create
 ```
-
-### Adding a new Twilio Price
-
-```
-$ heroku config:set TWILIO_PRICE_COUNTRIES=<country_code_for_price> && heroku run rails twilio_price:fetch_new && heroku config:unset TWILIO_PRICE_COUNTRIES
-```
