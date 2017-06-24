@@ -33,11 +33,7 @@ namespace :projects do
 
     DEFAULT_PLACEHOLDER = "CHANGE_ME"
 
-    project = Project.new(
-      :phone_calls_count => 0,
-      :sms_count => 0,
-      :amount_saved => 0,
-    )
+    project = Project.new
 
     prompt_for_input(
       "Project Name",
