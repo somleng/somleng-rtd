@@ -1,6 +1,8 @@
 language: ruby
 services:
   - postgresql
+env:
+  - START_SIMPLECOV=1
 addons:
   postgresql: '9.4'
   code_climate:
