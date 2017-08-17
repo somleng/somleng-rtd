@@ -149,7 +149,7 @@ class ProjectAggregation < ApplicationRecord
   end
 
   def self.total_equivalent_twilio_price_sum_sql
-    [[:calls_inbound_minutes, :inbound_voice], [:calls_outbound_minutes, :outbound_voice], [:sms_inbound_count, :inbound_sms], [:sms_outbound_count, :outbound_sms]].map { |table_columns| "(\"#{TwilioPrice.table_name}\".\"average_#{table_columns[1]}_price_microunits\" * \"#{table_name}\".\"#{table_columns[0]}\")" }.join(" + ")
+    [[:calls_inbound_minutes, :inbound_voice], [:calls_outbound_minutes, :outbound_voice], [:sms_inbound_count, :inbound_sms], [:sms_outbound_count, :outbound_sms]].map { |table_columns| "(\"#{TwilioPrice.table_name}\".\"average_#{table_columns[1]}_price_microunits\"::bigint * \"#{table_name}\".\"#{table_columns[0]}\")" }.join(" + ")
   end
 
   def self.total_amount_spent_sum_sql

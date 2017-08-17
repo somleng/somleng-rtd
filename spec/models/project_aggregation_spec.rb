@@ -104,7 +104,7 @@ describe ProjectAggregation do
     let(:project_aggregation) {
       create(
         factory,
-        :calls_inbound_minutes => 100,
+        :calls_inbound_minutes => 1000000,
         :calls_inbound_price_cents => 50,
         :calls_outbound_minutes => 200,
         :calls_outbound_price_cents => 100,
@@ -124,13 +124,13 @@ describe ProjectAggregation do
     end
 
     describe ".total_equivalent_twilio_price" do
-      # (100 * 7000) + (200 * 100000) + (25 * 7500) + (50 * 50000) = 23387500
-      it { expect(described_class.total_equivalent_twilio_price).to eq(Money.new(2339, asserted_currency)) }
+      # (1000000 * 7000) + (200 * 100000) + (25 * 7500) + (50 * 50000) = 7022687500
+      it { expect(described_class.total_equivalent_twilio_price).to eq(Money.new(702269, asserted_currency)) }
     end
 
     describe ".total_amount_saved" do
-      # 2339 - 187 = 2152
-      it { expect(described_class.total_amount_saved).to eq(Money.new(2152, asserted_currency)) }
+      # 702269 - 187 = 702082
+      it { expect(described_class.total_amount_saved).to eq(Money.new(702082, asserted_currency)) }
     end
   end
 
