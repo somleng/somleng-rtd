@@ -19,15 +19,15 @@
             %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
               Projects
             %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = pluralize(number_to_human(@real_time_data.projects_count), "Project")
+              = number_to_human(@real_time_data.projects_count)
             %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
               Countries
             %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = pluralize(number_to_human(@real_time_data.countries_count), "Country")
+              = number_to_human(@real_time_data.countries_count)
             %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
               Continents
             %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = pluralize(number_to_human(@real_time_data.continents_count), "Continent")
+              = number_to_human(@real_time_data.continents_count)
 
     .col-xs-12.col-sm-12.col-md-3.col-lg-3
       .panel.panel-warning
@@ -39,22 +39,25 @@
               Inbound
             %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
               = pluralize(number_to_human(@real_time_data.calls_inbound_count), "Call")
+              %br
               = pluralize(number_to_human(@real_time_data.calls_inbound_minutes), "Min")
             %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
               Outbound
             %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
               = pluralize(number_to_human(@real_time_data.calls_outbound_count), "Call")
+              %br
               = pluralize(number_to_human(@real_time_data.calls_outbound_minutes), "Min")
             %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
               Total
             %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
               = pluralize(number_to_human(@real_time_data.calls_count), "Call")
+              %br
               = pluralize(number_to_human(@real_time_data.calls_minutes), "Min")
 
     .col-xs-12.col-sm-12.col-md-3.col-lg-3
       .panel.panel-success
         .panel-heading
-          = fa_icon("money", :text => "Savings")
+          = fa_icon("bank", :text => "Savings")
         .panel-body
           %dl.row
             %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
@@ -112,14 +115,14 @@
               = fa_icon("plus-circle")
               = fa_icon("clock-o", :text => "= Total Call Minutes")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("money", :text => "= Total Amount Spent")
+              = fa_icon("money", :text => "= Total Spent")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("money")
               = fa_icon("tags", :text => "= Twilio's Price")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("bank", :text => "= Total Amount Saved")
+              = fa_icon("bank", :text => "= Total Saved")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("tag", :text => "= Twilio Voice Pricing")
+              = fa_icon("tag", :text => "= Twilio Pricing")
         %thead
           %tr
             %th
@@ -150,14 +153,14 @@
             %th{:title => "Total Call Minutes"}
               = fa_icon("plus-circle")
               = fa_icon("clock-o")
-            %th{:title => "Total Amount Spent"}
+            %th{:title => "Total Spent"}
               = fa_icon("money")
             %th{:title => "Twilio's Price"}
               = fa_icon("money")
               = fa_icon("tags")
-            %th{:title => "Total Amount Saved"}
+            %th{:title => "Total Saved"}
               = fa_icon("bank")
-            %th{:title => "Twilio Voice Pricing"}
+            %th{:title => "Twilio Pricing"}
               = fa_icon("tag")
         %tbody
           - @projects.each_with_index do |project, index|
@@ -198,17 +201,17 @@
               %td{:title => "Total Minutes"}
                 = pluralize(number_to_human(project.calls_minutes), "Minute")
 
-              %td{:title => "Total Amount Spent"}
+              %td{:title => "Total Spent"}
                 = project.total_amount_spent.format
 
               %td{:title => "Twilio's Price"}
                 = project.total_equivalent_twilio_price.format
 
-              %td{:title => "Total Amount Saved"}
+              %td{:title => "Total Saved"}
                 = project.total_amount_saved.format
 
-              %td{:title => "Comparison Voice Pricing"}
-                = link_to(project.twilio_price_voice_url, :title => "Twilio Voice Pricing", :target => "_blank") do
+              %td{:title => "Twilio Pricing"}
+                = link_to(project.twilio_price_voice_url, :title => "Twilio Pricing", :target => "_blank") do
                   = fa_icon("tag")
 
 %hr
