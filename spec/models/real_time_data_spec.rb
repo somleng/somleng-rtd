@@ -10,7 +10,7 @@ describe RealTimeData do
         "calls_minutes", "calls_outbound_minutes", "calls_inbound_minutes",
         "sms_count", "sms_outbound_count", "sms_inbound_count",
         "total_amount_spent", "total_equivalent_twilio_price",
-        "total_amount_saved",  "projects_count"
+        "total_amount_saved",  "projects_count", "countries_count", "continents_count"
       ]
     }
 
@@ -19,6 +19,44 @@ describe RealTimeData do
     end
 
     it { assert_json! }
+  end
+
+  describe "#countries_count, #continents_count" do
+    let(:cambodia) { create(:twilio_price, :country_code => "KH") }
+
+    def setup_scenario
+      cambodia
+      create(:twilio_price, :country_code => "SO")
+      create(:twilio_price, :country_code => "TH")
+    end
+
+    before do
+      setup_scenario
+    end
+
+    def assert_result!
+      expect(subject.countries_count).to eq(asserted_countries_count)
+      expect(subject.continents_count).to eq(asserted_continents_count)
+    end
+
+    context "given no project scope" do
+      let(:asserted_countries_count) { 3 }
+      let(:asserted_continents_count) { 2 }
+
+      it { assert_result! }
+    end
+
+    context "given a project scope" do
+      let(:asserted_countries_count) { 1 }
+      let(:asserted_continents_count) { 1 }
+
+      def setup_scenario
+        super
+        subject.project = create(:project, :twilio_price => cambodia)
+      end
+
+      it { assert_result! }
+    end
   end
 
   describe "#date_updated" do

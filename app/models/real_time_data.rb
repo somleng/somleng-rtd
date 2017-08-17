@@ -23,6 +23,14 @@ class RealTimeData
     projects.count
   end
 
+  def countries_count
+    twilio_prices.count
+  end
+
+  def continents_count
+    (twilio_prices.map { |twilio_price| twilio_price.country.continent }).uniq.count
+  end
+
   def calls_count
     filtered_project_aggregations.calls_count
   end
@@ -81,6 +89,14 @@ class RealTimeData
     projects_scope.between_dates(start_date, end_date)
   end
 
+  def twilio_prices_scope
+    project ? TwilioPrice.where(:id => project.twilio_price_id) : TwilioPrice.all
+  end
+
+  def twilio_prices
+    twilio_prices_scope
+  end
+
   def projects_scope
     project ? Project.where(:id => project.id) : Project.all
   end
@@ -101,6 +117,8 @@ class RealTimeData
       :sms_outbound_count => nil,
       :sms_inbound_count => nil,
       :projects_count => nil,
+      :countries_count => nil,
+      :continents_count => nil,
       :total_amount_spent => nil,
       :total_equivalent_twilio_price => nil,
       :total_amount_saved => nil

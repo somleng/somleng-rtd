@@ -10,118 +10,65 @@
       never
 
   .row
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+    .col-xs-12.col-sm-12.col-md-3.col-lg-3
       .panel.panel-primary
         .panel-heading
           = fa_icon("building", :text => "Projects")
         .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.projects_count), "Project")
+          %dl.row
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Projects
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = pluralize(number_to_human(@real_time_data.projects_count), "Project")
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Countries
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = pluralize(number_to_human(@real_time_data.countries_count), "Country")
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Continents
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = pluralize(number_to_human(@real_time_data.continents_count), "Continent")
 
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-success
-        .panel-heading
-          = fa_icon("plus-circle")
-          = fa_icon("phone", :text => "Total Calls")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.calls_count), "Call")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-info
-        .panel-heading
-          = fa_icon("plus-circle")
-          = fa_icon("clock-o", :text => "Total Call Minutes")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.calls_minutes), "Minute")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+    .col-xs-12.col-sm-12.col-md-3.col-lg-3
       .panel.panel-warning
         .panel-heading
-          = fa_icon("plus-circle")
-          = fa_icon("wechat", :text => "Total SMS")
+          = fa_icon("phone", :text => "Calls")
         .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.sms_count), "Message")
+          %dl.row
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Inbound
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = pluralize(number_to_human(@real_time_data.calls_inbound_count), "Call")
+              = pluralize(number_to_human(@real_time_data.calls_inbound_minutes), "Min")
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Outbound
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = pluralize(number_to_human(@real_time_data.calls_outbound_count), "Call")
+              = pluralize(number_to_human(@real_time_data.calls_outbound_minutes), "Min")
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Total
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = pluralize(number_to_human(@real_time_data.calls_count), "Call")
+              = pluralize(number_to_human(@real_time_data.calls_minutes), "Min")
 
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-danger
-        .panel-heading
-          = fa_icon("bank", :text => "Total Amount Saved")
-        .panel-body
-          %p
-            = @real_time_data.total_amount_saved
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-primary
-        .panel-heading
-          = fa_icon("arrow-circle-down")
-          = fa_icon("phone", :text => "Inbound Calls")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.calls_inbound_count), "Call")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
+    .col-xs-12.col-sm-12.col-md-3.col-lg-3
       .panel.panel-success
         .panel-heading
-          = fa_icon("arrow-circle-down")
-          = fa_icon("clock-o", :text => "Inbound Call Minutes")
+          = fa_icon("money", :text => "Savings")
         .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.calls_inbound_minutes), "Minute")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-info
-        .panel-heading
-          = fa_icon("arrow-circle-up")
-          = fa_icon("phone", :text => "Outbound Calls")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.calls_outbound_count), "Call")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-warning
-        .panel-heading
-          = fa_icon("arrow-circle-up")
-          = fa_icon("clock-o", :text => "Outbound Call Minutes")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.calls_outbound_minutes), "Minute")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-danger
-        .panel-heading
-          = fa_icon("arrow-circle-down")
-          = fa_icon("wechat", :text => "Inbound SMS")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.sms_inbound_count), "Message")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-primary
-        .panel-heading
-          = fa_icon("arrow-circle-up")
-          = fa_icon("wechat", :text => "Outbound SMS")
-        .panel-body
-          %p
-            = pluralize(number_to_human(@real_time_data.sms_outbound_count), "Message")
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-success
-        .panel-heading
-          = fa_icon("money", :text => "Total Amount Spent")
-        .panel-body
-          %p
-            = @real_time_data.total_amount_spent
-
-    .col-xs-6.col-sm-6.col-md-3.col-lg-3
-      .panel.panel-info
-        .panel-heading
-          = fa_icon("tags", :text => "Total Equivalent Twilio Price")
-        .panel-body
-          %p
-            = @real_time_data.total_equivalent_twilio_price
+          %dl.row
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Total Spent
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = @real_time_data.total_amount_spent
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Twilio's Price
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = @real_time_data.total_equivalent_twilio_price
+            %dt.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              Total Saved
+            %dd.col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = @real_time_data.total_amount_saved
 
 %hr
 
@@ -165,25 +112,14 @@
               = fa_icon("plus-circle")
               = fa_icon("clock-o", :text => "= Total Call Minutes")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("arrow-circle-down")
-              = fa_icon("wechat", :text => "= Inbound SMS")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("arrow-circle-up")
-              = fa_icon("wechat", :text => "= Outbound SMS")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("plus-circle")
-              = fa_icon("wechat", :text => "= Total SMS")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("money", :text => "= Total Amount Spent")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("money")
-              = fa_icon("tags", :text => "= Total Equivalent Twilio Price")
+              = fa_icon("tags", :text => "= Twilio's Price")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("bank", :text => "= Total Amount Saved")
             .col-xs-6.col-sm-6.col-md-3.col-lg-3
               = fa_icon("tag", :text => "= Twilio Voice Pricing")
-            .col-xs-6.col-sm-6.col-md-3.col-lg-3
-              = fa_icon("tags", :text => "= Twilio SMS Pricing")
         %thead
           %tr
             %th
@@ -214,26 +150,15 @@
             %th{:title => "Total Call Minutes"}
               = fa_icon("plus-circle")
               = fa_icon("clock-o")
-            %th{:title => "Inbound SMS"}
-              = fa_icon("arrow-circle-down")
-              = fa_icon("wechat")
-            %th{:title => "Outbound SMS"}
-              = fa_icon("arrow-circle-up")
-              = fa_icon("wechat")
-            %th{:title => "Total SMS"}
-              = fa_icon("plus-circle")
-              = fa_icon("wechat")
             %th{:title => "Total Amount Spent"}
               = fa_icon("money")
-            %th{:title => "Total Equivalent Twilio Price"}
+            %th{:title => "Twilio's Price"}
               = fa_icon("money")
               = fa_icon("tags")
             %th{:title => "Total Amount Saved"}
               = fa_icon("bank")
             %th{:title => "Twilio Voice Pricing"}
               = fa_icon("tag")
-            %th{:title => "Twilio SMS Pricing"}
-              = fa_icon("tags")
         %tbody
           - @projects.each_with_index do |project, index|
             %tr
@@ -273,19 +198,10 @@
               %td{:title => "Total Minutes"}
                 = pluralize(number_to_human(project.calls_minutes), "Minute")
 
-              %td{:title => "Inbound SMS"}
-                = pluralize(number_to_human(project.sms_inbound_count), "Message")
-
-              %td{:title => "Outbound SMS"}
-                = pluralize(number_to_human(project.sms_outbound_count), "Message")
-
-              %td{:title => "Total SMS"}
-                = pluralize(number_to_human(project.sms_count), "Message")
-
               %td{:title => "Total Amount Spent"}
                 = project.total_amount_spent.format
 
-              %td{:title => "Total Equivalent Twilio Price"}
+              %td{:title => "Twilio's Price"}
                 = project.total_equivalent_twilio_price.format
 
               %td{:title => "Total Amount Saved"}
@@ -294,9 +210,6 @@
               %td{:title => "Comparison Voice Pricing"}
                 = link_to(project.twilio_price_voice_url, :title => "Twilio Voice Pricing", :target => "_blank") do
                   = fa_icon("tag")
-              %td{:title => "Comparison SMS Pricing"}
-                = link_to(project.twilio_price_sms_url, :title => "Twilio SMS Pricing", :target => "_blank") do
-                  = fa_icon("tags")
 
 %hr
 
