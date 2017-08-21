@@ -90,7 +90,7 @@ class ProjectAggregation < ApplicationRecord
   end
 
   def fetch!
-    twilio_client.account.usage.records.list(:start_date => date, :end_date => date).each do |record|
+    twilio_client.usage.records.list(:start_date => date, :end_date => date).each do |record|
       case record.category
       when "calls"
         self.calls_count = record.count
@@ -162,10 +162,15 @@ class ProjectAggregation < ApplicationRecord
   end
 
   def twilio_client
-    @twilio_client ||= Twilreapi::Client.new(
+    @twilio_client ||= initialize_twilio_client
+  end
+
+  def initialize_twilio_client
+    client = Twilreapi::Client.new(
       twilreapi_account_sid,
-      twilreapi_auth_token,
-      :host => twilreapi_host
+      twilreapi_auth_token
     )
+    client.twilreapi_host = twilreapi_host
+    client
   end
 end

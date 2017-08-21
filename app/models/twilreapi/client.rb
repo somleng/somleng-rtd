@@ -1,5 +1,7 @@
 class Twilreapi::Client < Twilio::REST::Client
-  def build_full_path(path, params, method)
-    super("/api" + path, params, method)
+  attr_accessor :twilreapi_host
+
+  def api
+    @api ||= Twilreapi::Api.new(self)
   end
 end

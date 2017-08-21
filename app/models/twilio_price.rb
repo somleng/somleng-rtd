@@ -124,15 +124,15 @@ class TwilioPrice < ApplicationRecord
   end
 
   def fetch_voice!
-    @voice_pricing = twilio_client.voice.countries.get(country_code)
+    @voice_pricing = twilio_client.pricing.voice.countries(country_code).fetch
   end
 
   def fetch_messaging!
-    @sms_pricing = twilio_client.messaging.countries.get(country_code)
+    @sms_pricing = twilio_client.pricing.messaging.countries(country_code).fetch
   end
 
   def twilio_client
-    @twilio_client ||= Twilio::REST::PricingClient.new(
+    @twilio_client ||= Twilio::REST::Client.new(
       ENV["TWILIO_ACCOUNT_SID"],
       ENV["TWILIO_AUTH_TOKEN"]
     )

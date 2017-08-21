@@ -82,7 +82,7 @@ describe TwilioPrice do
 
     let(:country_code) { "KH" }
     let(:asserted_average_outbound_voice_price) { Money.new(100000, asserted_currency) }
-    let(:asserted_average_outbound_sms_price) { Money.new(44000, asserted_currency) }
+    let(:asserted_average_outbound_sms_price) { Money.new(51909, asserted_currency) }
     let(:asserted_average_inbound_voice_price) { Money.new(0, asserted_currency) }
     let(:asserted_average_inbound_sms_price) { Money.new(0, asserted_currency) }
 
@@ -141,7 +141,7 @@ describe TwilioPrice do
           let(:country_code) { "EE" }
           let(:asserted_average_outbound_voice_price) { Money.new(325433, asserted_currency) }
           let(:asserted_average_outbound_sms_price) { Money.new(89375, asserted_currency) }
-          let(:asserted_average_inbound_voice_price) { Money.new(7500, asserted_currency) }
+          let(:asserted_average_inbound_voice_price) { Money.new(10000, asserted_currency) }
           let(:asserted_average_inbound_sms_price) { Money.new(7500, asserted_currency) }
           it { assert_price_updated!(new_twilio_price) }
         end

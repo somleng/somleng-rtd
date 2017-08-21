@@ -7,16 +7,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json
+      User-Agent:
+      - twilio-ruby/5.1.1 (ruby/x86_64-linux 2.4.0-p0)
       Accept-Charset:
       - utf-8
-      User-Agent:
-      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
       Authorization:
       - "<ENCODED AUTH HEADER>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -27,21 +27,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 16 Feb 2017 04:36:24 GMT
+      - Mon, 21 Aug 2017 03:53:38 GMT
       Etag:
       - W/"5cc6b05cffeb369fbc527c262ec734f2"
       Server:
-      - nginx/1.10.1
+      - nginx/1.10.3
       Strict-Transport-Security:
-      - max-age=15552000
+      - max-age=15552000; includeSubDomains
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 0f5d57d0-fb6b-4c68-9e6d-aed39fd0fd27
+      - e5037432-fbea-487e-9b5a-7d61cbcf3dc5
       X-Runtime:
-      - '0.209632'
+      - '0.980652'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -54,5 +54,5 @@ http_interactions:
         Voice Minutes","account_sid":"ACC123456789","start_date":"2017-02-15","end_date":"2017-02-15","count":534,"count_unit":"calls","usage":971,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-inbound&EndDate=2017-02-15&StartDate=2017-02-15","subresource_uris":{}},{"category":"calls-outbound","description":"Outbound
         Voice Minutes","account_sid":"ACC123456789","start_date":"2017-02-15","end_date":"2017-02-15","count":143,"count_unit":"calls","usage":143,"usage_unit":"minutes","price":"0.00","price_unit":"usd","api_version":"2010-04-01","uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?Category=calls-outbound&EndDate=2017-02-15&StartDate=2017-02-15","subresource_uris":{}}],"first_page_uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?EndDate=2017-02-15&StartDate=2017-02-15&page=0","end":0,"previous_page_uri":null,"next_page_uri":null,"page":0,"page_size":50,"start":0,"uri":"/api/2010-04-01/Accounts/ACC123456789/Usage/Records?EndDate=2017-02-15&StartDate=2017-02-15&page=0"}'
     http_version: 
-  recorded_at: Thu, 16 Feb 2017 04:36:24 GMT
+  recorded_at: Mon, 21 Aug 2017 03:53:38 GMT
 recorded_with: VCR 3.0.3

@@ -7,16 +7,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json
+      User-Agent:
+      - twilio-ruby/5.1.1 (ruby/x86_64-linux 2.4.0-p0)
       Accept-Charset:
       - utf-8
-      User-Agent:
-      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
       Authorization:
       - "<ENCODED AUTH HEADER>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -36,19 +36,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 18 Feb 2017 07:12:51 GMT
+      - Mon, 21 Aug 2017 03:10:51 GMT
       Strict-Transport-Security:
       - max-age=15768000
       Twilio-Request-Duration:
-      - '0.470'
+      - '0.399'
       Twilio-Request-Id:
-      - RQeec75b7fd6e44227beec870dd9c41e49
+      - RQc0270750380541dba3e55b5edb51802f
       X-Powered-By:
       - AT-5000
       X-Shenanigans:
       - none
       Content-Length:
-      - '996'
+      - '994'
       Connection:
       - keep-alive
     body:
@@ -64,10 +64,10 @@ http_interactions:
         - Mobile", "base_price": "0.4783", "current_price": "0.4783"}, {"prefixes":
         ["372"], "friendly_name": "Programmable Outbound Minute - Estonia", "base_price":
         "0.033", "current_price": "0.033"}], "inbound_call_prices": [{"number_type":
-        "national", "base_price": "0.0075", "current_price": "0.0075"}], "price_unit":
+        "national", "base_price": "0.010", "current_price": "0.010"}], "price_unit":
         "USD", "url": "https://pricing.twilio.com/v1/Voice/Countries/EE"}'
     http_version: 
-  recorded_at: Sat, 18 Feb 2017 07:12:52 GMT
+  recorded_at: Mon, 21 Aug 2017 03:10:51 GMT
 - request:
     method: get
     uri: https://pricing.twilio.com/v1/Messaging/Countries/EE
@@ -75,16 +75,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json
+      User-Agent:
+      - twilio-ruby/5.1.1 (ruby/x86_64-linux 2.4.0-p0)
       Accept-Charset:
       - utf-8
-      User-Agent:
-      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
       Authorization:
       - "<ENCODED AUTH HEADER>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -104,13 +104,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 18 Feb 2017 07:12:58 GMT
+      - Mon, 21 Aug 2017 03:10:52 GMT
       Strict-Transport-Security:
       - max-age=15768000
       Twilio-Request-Duration:
-      - '0.313'
+      - '0.388'
       Twilio-Request-Id:
-      - RQc4694d5677de47c2ba4bcccdfdf578b8
+      - RQb084af6f851b48e5b0d29a20b3a34540
       X-Powered-By:
       - AT-5000
       X-Shenanigans:
@@ -136,5 +136,5 @@ http_interactions:
         "local", "base_price": "0.0845", "current_price": "0.0845"}]}], "inbound_sms_prices":
         [{"number_type": "mobile", "base_price": "0.0075", "current_price": "0.0075"}]}'
     http_version: 
-  recorded_at: Sat, 18 Feb 2017 07:12:58 GMT
+  recorded_at: Mon, 21 Aug 2017 03:10:53 GMT
 recorded_with: VCR 3.0.3

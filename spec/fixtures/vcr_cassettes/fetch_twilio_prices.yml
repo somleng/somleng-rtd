@@ -7,16 +7,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json
+      User-Agent:
+      - twilio-ruby/5.1.1 (ruby/x86_64-linux 2.4.0-p0)
       Accept-Charset:
       - utf-8
-      User-Agent:
-      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
       Authorization:
       - "<ENCODED AUTH HEADER>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -36,13 +36,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 07 Dec 2016 08:06:16 GMT
+      - Mon, 21 Aug 2017 03:12:32 GMT
       Strict-Transport-Security:
       - max-age=15768000
       Twilio-Request-Duration:
-      - '0.227'
+      - '0.277'
       Twilio-Request-Id:
-      - RQ8ec82f1ad1314e24912c0a53130fe399
+      - RQ03fe67dd582b4a78896a118e7736fcef
       X-Powered-By:
       - AT-5000
       X-Shenanigans:
@@ -62,7 +62,7 @@ http_interactions:
         - Cambodia - Mobile", "base_price": "0.10", "current_price": "0.10"}], "inbound_call_prices":
         [], "price_unit": "USD", "url": "https://pricing.twilio.com/v1/Voice/Countries/KH"}'
     http_version: 
-  recorded_at: Wed, 07 Dec 2016 08:06:15 GMT
+  recorded_at: Mon, 21 Aug 2017 03:12:33 GMT
 - request:
     method: get
     uri: https://pricing.twilio.com/v1/Messaging/Countries/KH
@@ -70,16 +70,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json
+      User-Agent:
+      - twilio-ruby/5.1.1 (ruby/x86_64-linux 2.4.0-p0)
       Accept-Charset:
       - utf-8
-      User-Agent:
-      - twilio-ruby/4.13.0 (ruby/x86_64-linux 2.3.3-p222)
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
       Authorization:
       - "<ENCODED AUTH HEADER>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -99,19 +99,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 07 Dec 2016 08:06:18 GMT
+      - Mon, 21 Aug 2017 03:12:34 GMT
       Strict-Transport-Security:
       - max-age=15768000
       Twilio-Request-Duration:
-      - '0.495'
+      - '0.613'
       Twilio-Request-Id:
-      - RQ4f3f6aa638f44551b74959f826ba59bd
+      - RQbc15dbc3117d4503b41d4052e0a4ad83
       X-Powered-By:
       - AT-5000
       X-Shenanigans:
       - none
       Content-Length:
-      - '2095'
+      - '2517'
       Connection:
       - keep-alive
     body:
@@ -124,17 +124,17 @@ http_interactions:
         "mnc": "18", "carrier": "Mfone", "prices": [{"number_type": "mobile", "base_price":
         "0.044", "current_price": "0.044"}, {"number_type": "local", "base_price":
         "0.044", "current_price": "0.044"}]}, {"mcc": "456", "mnc": "2", "carrier":
-        "Hello", "prices": [{"number_type": "mobile", "base_price": "0.044", "current_price":
-        "0.044"}, {"number_type": "local", "base_price": "0.044", "current_price":
-        "0.044"}]}, {"mcc": "456", "mnc": "5", "carrier": "Star Cell", "prices": [{"number_type":
+        "Hello", "prices": [{"number_type": "mobile", "base_price": "0.051", "current_price":
+        "0.051"}, {"number_type": "local", "base_price": "0.051", "current_price":
+        "0.051"}]}, {"mcc": "456", "mnc": "5", "carrier": "Star Cell", "prices": [{"number_type":
         "mobile", "base_price": "0.044", "current_price": "0.044"}, {"number_type":
         "local", "base_price": "0.044", "current_price": "0.044"}]}, {"mcc": "456",
         "mnc": "4", "carrier": "qb", "prices": [{"number_type": "mobile", "base_price":
         "0.044", "current_price": "0.044"}, {"number_type": "local", "base_price":
         "0.044", "current_price": "0.044"}]}, {"mcc": "456", "mnc": "6", "carrier":
-        "Smart Mobile", "prices": [{"number_type": "mobile", "base_price": "0.044",
-        "current_price": "0.044"}, {"number_type": "local", "base_price": "0.044",
-        "current_price": "0.044"}]}, {"mcc": "456", "mnc": "9", "carrier": "Beeline",
+        "Smart Mobile", "prices": [{"number_type": "mobile", "base_price": "0.051",
+        "current_price": "0.051"}, {"number_type": "local", "base_price": "0.051",
+        "current_price": "0.051"}]}, {"mcc": "456", "mnc": "9", "carrier": "Beeline",
         "prices": [{"number_type": "mobile", "base_price": "0.044", "current_price":
         "0.044"}, {"number_type": "local", "base_price": "0.044", "current_price":
         "0.044"}]}, {"mcc": "456", "mnc": "999", "carrier": "Other", "prices": [{"number_type":
@@ -142,7 +142,13 @@ http_interactions:
         "local", "base_price": "0.044", "current_price": "0.044"}]}, {"mcc": "456",
         "mnc": "8", "carrier": "Metfone", "prices": [{"number_type": "mobile", "base_price":
         "0.044", "current_price": "0.044"}, {"number_type": "local", "base_price":
-        "0.044", "current_price": "0.044"}]}], "inbound_sms_prices": []}'
+        "0.044", "current_price": "0.044"}]}, {"mcc": "456", "mnc": "11", "carrier":
+        "Seatel", "prices": [{"number_type": "mobile", "base_price": "0.11", "current_price":
+        "0.11"}, {"number_type": "local", "base_price": "0.11", "current_price": "0.11"}]},
+        {"mcc": "456", "mnc": "16", "carrier": "Cootel", "prices": [{"number_type":
+        "mobile", "base_price": "0.051", "current_price": "0.051"}, {"number_type":
+        "local", "base_price": "0.051", "current_price": "0.051"}]}], "inbound_sms_prices":
+        []}'
     http_version: 
-  recorded_at: Wed, 07 Dec 2016 08:06:17 GMT
+  recorded_at: Mon, 21 Aug 2017 03:12:34 GMT
 recorded_with: VCR 3.0.3
