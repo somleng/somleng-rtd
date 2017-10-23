@@ -4,7 +4,7 @@ services:
 env:
   - START_SIMPLECOV=1
 addons:
-  postgresql: '9.4'
+  postgresql: '9.6'
   code_climate:
     repo_token:
       secure: "fuOaqrrk3fszN5Hdr/GhO8x0H6K9v8e327bUNqB70pCNnvvQViZI8hSycUNkPGKMT/PNNOHItQB9Y8un9ArIZtKO99D2jNmFX9si0j3Z2nmg9BClqM02W6voJKKiEgFyt57JrgWCCxpYHhKcBVJmdcN/yOaxKmnC02LUuZHXfn9PZc+2cwh16Qhzn24vOEwTw7QKro0tYr5qakRd+u9SYVKx+FvYUbksFaQqIYG+2pv53w4blCRz6iuKdH5R/QdpRZU7LajNZT4ijAxrkaoBqRjVh/d7haboqtv9dFi6nFd8ORP9u884nusZG1q3z/DvA6lqnH/hYL5GbM2lH6MzeZUXpKodONcl2EuLHX8TPm4ESrPWOK1OqyHeDG64G/FJUsQFyrLVEmPcnxpb0DhJSx0+faWAVmUAN65/uuVOTAdsRrkTFqGzwNe6NPFw+2F0rWdmIadYBLOPfKkUFmse8tmtxFKn8yUwIO50gqg3bEImY857jqlr/JCtR+/4np0nl0ksiwWnWoWdW7HixX/nvrUmaV3MD7wmet2WVQNOhGBX+AeNlxiI5G+iKsLL5eIyAZHf2R13kGuO7c+4WsaeKq1WLiFg4CdgLnksUcRkqNIPSuExzpk7fa52zx+yW6v7T8RSPdH2zagOvlrZqwwApit9ZQZ8UTuPe3ifFVe4Nac="
