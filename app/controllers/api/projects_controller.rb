@@ -6,6 +6,6 @@ class Api::ProjectsController < Api::BaseController
   end
 
   def association_chain
-    Project.between_dates(query_filter.start_date, query_filter.end_date)
+    projects_scope.between_dates(query_filter.start_date, query_filter.end_date)
   end
 end

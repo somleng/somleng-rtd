@@ -50,4 +50,8 @@ class Api::BaseController < ApplicationController
   def respond_with_resource(resource)
     respond_with(:api, resource)
   end
+
+  def project_scope
+    Project.published
+  end
 end

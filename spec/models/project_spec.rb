@@ -36,6 +36,34 @@ describe Project do
     it { is_expected.to allow_value("my-project.com").for(:twilreapi_host) }
   end
 
+  describe "state_machine" do
+    def subject_attributes
+      {:status => current_status}
+    end
+
+    subject { create(factory, subject_attributes) }
+
+    context "status is 'published'" do
+      let(:current_status) { :published }
+
+      def assert_transitions!
+        is_expected.to transition_from(:published).to(:unpublished).on_event(:unpublish)
+      end
+
+      it { assert_transitions! }
+    end
+
+    context "status is 'unpublished'" do
+      let(:current_status) { :unpublished }
+
+      def assert_transitions!
+        is_expected.to transition_from(:unpublished).to(:published).on_event(:publish)
+      end
+
+      it { assert_transitions! }
+    end
+  end
+
   describe "encryption" do
     subject { build(factory) }
 

@@ -164,7 +164,7 @@
               = fa_icon("tag")
         %tbody
           - @projects.each_with_index do |project, index|
-            %tr
+            %tr{:id => project.id}
               %th{:scope => "row"}
                 = index + 1
 

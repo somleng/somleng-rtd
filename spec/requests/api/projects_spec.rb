@@ -2,13 +2,14 @@ require 'rails_helper'
 
 describe "Projects" do
   let(:query_params) { {} }
+  let(:skip_before_do_request) { false }
 
   def setup_scenario
   end
 
   before do
     setup_scenario
-    do_request
+    do_request if !skip_before_do_request
   end
 
   describe "GET '/api/projects.json'" do
@@ -69,7 +70,11 @@ describe "Projects" do
   end
 
   describe "GET '/api/projects/:id.json'" do
-    let(:project) { create(:project) }
+    let(:project) { create(:project, project_attributes) }
+
+    def project_attributes
+      {}
+    end
 
     def setup_scenario
       project
@@ -79,11 +84,27 @@ describe "Projects" do
       get(api_project_path(project))
     end
 
-    def assert_success!
-      expect(response.code).to eq("200")
-      expect(response.body).to eq(project.to_json)
+    context "published project" do
+      def assert_success!
+        expect(response.code).to eq("200")
+        expect(response.body).to eq(project.to_json)
+      end
+
+      it { assert_success! }
     end
 
-    it { assert_success! }
+    context "unpublished project" do
+      let(:skip_before_do_request) { true }
+
+      def project_attributes
+        super.merge(:status => :unpublished)
+      end
+
+      def assert_not_found!
+        expect { do_request }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it { assert_not_found! }
+    end
   end
 end

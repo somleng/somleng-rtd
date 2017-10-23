@@ -40,6 +40,15 @@ class Project < ApplicationRecord
 
   aasm :column => :status do
     state :published, :initial => true
+    state :unpublished
+
+    event :publish do
+      transitions :from => :unpublished, :to => :published
+    end
+
+    event :unpublish do
+      transitions :from => :published, :to => :unpublished
+    end
   end
 
   def self.fetch!(date = nil)

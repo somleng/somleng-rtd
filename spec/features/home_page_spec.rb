@@ -20,13 +20,37 @@ describe "Home Page" do
   end
 
   context "has projects" do
-    let(:project) { create(:project) }
+    let(:project) { create(:project, project_attributes) }
+
+    def project_attributes
+      {}
+    end
 
     def setup_scenario
       project
       super
     end
 
-    it { assert_home_page! }
+    context "published" do
+      def assert_home_page!
+        super
+        expect(page).to have_selector("##{project.id}")
+      end
+
+      it { assert_home_page! }
+    end
+
+    context "unpublished" do
+      def project_attributes
+        {:status => "unpublished"}
+      end
+
+      def assert_home_page!
+        super
+        expect(page).to have_no_selector("##{project.id}")
+      end
+
+      it { assert_home_page! }
+    end
   end
 end

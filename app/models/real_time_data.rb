@@ -98,7 +98,11 @@ class RealTimeData
   end
 
   def projects_scope
-    project ? Project.where(:id => project.id) : Project.all
+    project ? default_projects_scope.where(:id => project.id) : default_projects_scope
+  end
+
+  def default_projects_scope
+    Project.published
   end
 
   def project_aggregations_scope
