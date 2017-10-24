@@ -77,6 +77,29 @@ describe Project do
     it { assert_encrypted!(:twilreapi_auth_token) }
   end
 
+  describe ".fetch" do
+    let(:unpublished_project) {
+      create(:project, :status => "unpublished")
+    }
+
+    let(:projects) { [unpublished_project] }
+
+    before do
+      setup_scenario
+    end
+
+    def setup_scenario
+      projects
+      described_class.fetch!
+    end
+
+    def assert_fetch!
+      expect(unpublished_project.project_aggregations).to be_empty
+    end
+
+    it { assert_fetch! }
+  end
+
   describe "#to_json" do
     subject { create(factory) }
     let(:json) { JSON.parse(subject.to_json) }

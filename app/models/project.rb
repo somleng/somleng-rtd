@@ -52,7 +52,7 @@ class Project < ApplicationRecord
   end
 
   def self.fetch!(date = nil)
-    all.find_each { |project| project.fetch!(date) }
+    published.find_each { |project| project.fetch!(date) }
   end
 
   def fetch!(date = nil)
