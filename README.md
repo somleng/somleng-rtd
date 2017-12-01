@@ -1,8 +1,8 @@
 # Somleng-RTD
 
 [![Build Status](https://travis-ci.org/somleng/somleng-rtd.svg?branch=master)](https://travis-ci.org/somleng/somleng-rtd)
-[![Test Coverage](https://codeclimate.com/github/somleng/somleng-rtd/badges/coverage.svg)](https://codeclimate.com/github/somleng/somleng-rtd/coverage)
-[![Code Climate](https://codeclimate.com/github/somleng/somleng-rtd/badges/gpa.svg)](https://codeclimate.com/github/somleng/somleng-rtd)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/22fe915708c1a04d0b31/test_coverage)](https://codeclimate.com/github/somleng/somleng-rtd/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/22fe915708c1a04d0b31/maintainability)](https://codeclimate.com/github/somleng/somleng-rtd/maintainability)
 
 Somleng-RTD is a Real Time Data (RTD) collection API for [The Somleng Project](http://www.somleng.org). The API provides Real Time Data on various projects that use Somleng. The data includes project information, number of phone calls made, number of SMS messages sent and total cost savings.
 
